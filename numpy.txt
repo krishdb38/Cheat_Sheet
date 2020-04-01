@@ -1,4 +1,7 @@
 import numpy as np
+
+
+
 np.full((2,2),7) #2x2 full Matrix of 7
 np.ones(2,2)  #2x2 matrix of 1
 np.eye(2)
@@ -20,6 +23,10 @@ np.diagonal() #Extract a diagonal or construct a diagonal array
 np.diagflat() #keep in diag position
 np.tri() # An array with ones at and below the given diagonal and zeros elsewhere
 np.tri(12,12) #below 50% 1 and above is 0
+np.linspace(start,stop,number) #Return evenly spaced numbers over a specified interval
+np.linspace(0,4,8) #0,0.5,1,... total 8 numbers inside
+
+
 
 empty_like
 Return an empty array with shape and type of input.
@@ -42,16 +49,21 @@ Return a new array of given shape filled with value.
 a = np.array([........])
 a = ndarray
 a.dim
-a.dtype
+a.dtype #data type int,float,...
 a.flags #info about memory layout of the array
-a.shape #
+a.shape #Shape of created array
 a.strides #tuple of bytes to step in each dimension when traversing an array
 a.ndim #Number of dimension
-a.data
-a.size
-a.itemsize
-a.nbytes
-a.base
+a.data  #elements inside Metrics
+a.size   # total number of elements inside metrix (row x col)
+a.real   #real Part of the array
+a.buffer # object exposing buffer interface,optional Used to fill the array with data
+a.offset  #int,optional offset of array data in buffer.
+a.order #Row-major C-Style or column- major
+a.item# Copy an element of an array to a standard Python scalar and return it.
+a.itemsize # Int 
+a.nbytes   #Total size of memory #
+a.base     #base array7 is where the array data is actually stored.
 # Data Type
 a.dtype #Data-type of the array's element
 a.T # Transposed array
@@ -60,6 +72,18 @@ a.imag #the imaginary part of the array
 a.flat #1-D iterator over the array
 a.ctypes # An object to simplify the interaction of the array with the ctypes module
 #array interface
+
+
+
+#Arthmetic Operation
+a+a #element wise addition
+a-a # element wise operation 
+#Simple arthmetic operation produce element wise operation 
+#same shape array can only be done element wise operation
+
+
+
+
 __array_interface__#python side of the array interface
 __array_struct__ #C-typeof the array interface
 
@@ -242,3 +266,11 @@ a.__complex__(self)
 ## String Operations:
 a.__str__(self,)     #Return str(self)
 a.__repr__(self,/)  #Return repr(self)
+
+
+
+#### numpy.matlib  ###########
+
+
+
+
