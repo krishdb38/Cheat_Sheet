@@ -1,0 +1,77 @@
+USE DATABASE_NAME;
+SELECT COLUMN_NAME FROM TABLE;
+SELECT * FROM table_name;
+SELECT DISTINCT columns_name FROM table_name; #is used to return only distinct values. (unique) drop duplicates 
+SELECT COUNT(DISTINCT 	Country) from Customer;
+SELECT column1, column2,.. FROM table_name WHERE condition;
+SELECT column1, column2... FROM table_name where condition1 AND condition2 AND condition3;  # AND Syantax
+SELECT * FROM table WHERE contitinon1 OR condition2 OR condition3
+SELECT * FROM TABLE ORDER BY column1, column2 .. ASC | DESC; #Order by increasing or Decreasing
+INSERT INTO table_name (column1, column2, column3,....) VALUES (value1, value2, value3...)
+
+#A field with a NULL value is a field with no value.
+SELECT * FROM table WHERE column_name IS NULL;
+SELECT * FROM table WHERE column_name IS NOT NULL;
+
+#SQL UPDATE
+UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
+
+#Update Multiple Records
+UPDATE table_name SET column_name = "value" WHERE column_name = "condition"
+
+#SQL DELETE
+DELETE FROM table_name WHERE condition;
+DELETE FROM table_name ; #Will delete all tables
+
+# SQL TOP, LIMIT or ROWNUM Clause
+SELECT TOP number | percent column_name(s)  FROM table_name WHERE condition;
+SELECT column_name FROM table_name WHERE condition LIMIT number; 
+#Display top REcord of number
+
+#SQL MIN() and MAX() Functions
+SELECT MIN (column_name) FROM table_name WHERE condition;
+SELECT MAX(column_name) FROM table_name WHERE condition;
+
+#SQL COUNT() , AVG() and SUM() Functions
+SELECT COUNT(column_name) FROM table_name WHERE condition;
+SELECT AVG(column_name) FROM Table_Name WHERE condition;
+SELECT SUM(column_name) FROM Table_Name Where condition;
+
+# SQL Like--> The Like Operator is used in a WHERE clause to search a specified pattern in a column. There are 2 Wild Card % sign represents Zero, one or multiple characters. _ (Underscore) represents a single character
+
+SELECT column_name(s) FROM table_name WHERE columnN like pattern;
+"a%" --> Any Starts with a, "%a" --> Any values Ends with a , --> %or% --> any Values that have "or" in any Position
+'_r%' --> any value that have r in second Position.
+"a__%" --> any values that start with "a" and are atleast 3 characters in length, "a%o" --> any starts with a end ends with o
+
+### SQL Wildcard Characters --> A wildcard character is used to substiture one or more characters in a string.
+
+* --> Represents zero or more characters
+[] --> Represents any single character within the brackets
+^ --> Represents any single character within the brackets
+- -->  Represents a range of characters
+_ -->  Represents a single character
+
+
+ # SQL IN Operator --> IN operator allows you to specify multiple values in WHERE clause
+SELECT column_name(s) FROM table_name WHERE column_name IN (value1, value2)
+select * from city where District in ("Nepal","Herat","....)
+
+# SQL BETWEEN --> Selects values within a given range. The values can be numbers, text or dates. The BETWEEN operator is inclusive; begin and end values are included.
+SELECT column_name(s) FROM table_name WHERE column_name BETWEEN value1 AND Value2;
+
+
+#Between Text Values Example
+SELECT * FROM table_name
+WHERE column_name BETWEEN option AND options.
+
+## SQL ALIASES are used to give a table, or a column in a table, a temporary name;
+# Aliases are often used to make column names more readable. An alias only exists for duration of the query.
+# Alias Column Syntax
+SELECT column_name AS alias_name FROM table_name;
+SELECT column_name(s) FROM table_name AS alias_name;
+
+# SQL joins --> join clause is used to combine rows from two or more tables, based on a related column between them.
+
+
+

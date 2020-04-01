@@ -1,0 +1,22 @@
+wc -l <file name>    #Counts the line in the file 
+head  <file name>  # head 
+head -1 <file name> #one line
+
+"cut -f1 temptrain -d',' > temptrainy" #Cut First Column only
+"cut -f2-"+Num+" temptrain -d',' > temptrainrf"  #Cut f2 second Columns to given Num Culumn
+
+find . -name  filename\*
+
+To show line number in Vim
+ESC +: and type set number
+to remove ESC + : set nonumber
+
+grep -w "...."   file_name #To Match exact word # Other Parameter -r -i 
+
+## Find all files inside Linux Folder
+find folder_name -type f | wc -l  
+
+
+#to show the top of process
+htop show the current process in better window
+#jobs # ps # top # bg # fg

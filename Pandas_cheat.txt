@@ -1,0 +1,1 @@
+concate.drop(columns = ["Unnamed: 0"]) #Drop Column by Column Name

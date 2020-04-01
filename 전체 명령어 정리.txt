@@ -1,0 +1,30 @@
+### 201801 case (100개 샘플이 존재한다고 가정) ###
+### bininfo 생성 ###
+# cd /BiO/Alba/Enet/201801/
+# qsub -cwd -S /usr/bin/python -l hostname=alba /BiO/Alba/Enet/code/copy_fastq.py 201801_match_fastq.list
+# ls *.Fastq > flist
+# sed -n '1,50p' flist > flist1; sed -n '51,100p' flist > flist2
+# qsub -cwd -S /bin/sh -l hostname=alba /BiO/Alba/Enet/code/enet_analysis.sh flist1
+# qsub -cwd -S /bin/sh -l hostname=alba /BiO/Alba/Enet/code/enet_analysis.sh flist2
+# ls *.Fastq.sam.bam.sort.bam.rmdup.bam.sam > blist
+# qsub -cwd -S /bin/sh -l hostname=alba /BiO/Alba/Enet/code/bininfo.sh blist
+
+### 최종 bininfo list check ###
+## N차에서 생성하고자하는 bininfo 작업이 모두 끝난 후에 하시면 됩니다.
+# ls /BiO/Alba/2017_backup/SeqFF/ENET/bininfo/test_data/*_bininfo > infolist
+## N차에서 생성한 샘플에 대한 모든 정보가 info.N.list에 포함되어야합니다. (5st : 201601, 201602, 201610, 201801, 201802 모두 포함)
+# ex) cut -f1-5 /BiO/Alba/Enet/201801/201801_match_fastq.list >> /BiO/Alba/Enet/analysis/info.5st.list
+# ex) cut -f1-5 /BiO/Alba/Enet/201802/201802_match_fastq.list >> /BiO/Alba/Enet/analysis/info.5st.list
+# cp /BiO/Alba/2017_backup/SeqFF/ENET/bininfo/test_data/infolist /BiO/Alba/Enet/analysis/
+# cd /BiO/Alba/Enet/analysis/
+# ./match_2.py info.5st.list infolist
+## infolist의 모든 샘플이 final.list에 존재하는지 check. 개수가 맞지 않으면 except.list를 확인해주세요.
+# mv final.list final.5st.list
+# mv /BiO/Alba/2017_backup/SeqFF/ENET/bininfo/test_data/*_bininfo /BiO/Alba/2017_backup/SeqFF/ENET/bininfo/
+
+### Training ###
+## input-data/ 폴더에 bininfo_5000 옮기기
+## /BiO/Alba/Enet/Training/code/Enet.py의 input file을 bininfo_5000으로 변경
+# cd /BiO/Alba/Enet/Training/fold_result/
+# rm *
+# qsub -cwd -S /usr/bin/python -l hostname=alba /BiO/Alba/Enet/Training/code/Enet.py
