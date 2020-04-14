@@ -20,3 +20,11 @@ find folder_name -type f | wc -l
 #to show the top of process
 htop show the current process in better window
 #jobs # ps # top # bg # fg
+
+
+############################
+Add File/Folder to path
+export PATH=$PATH:/place/with/the/file
+e.g. 
+export PATH=$PATH:/BiO/ortho_krish/ncbi-blast-2.6.0+/bin/
+# The location of file or folder which you want to add in the path

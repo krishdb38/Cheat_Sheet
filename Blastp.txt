@@ -28,3 +28,6 @@ blastn -db  nt  -query nt.fsa -out results.out
     [-sorthsps sort_hsps] [-max_target_seqs num_sequences]
     [-num_threads int_value] [-ungapped] [-remote] [-comp_based_stats compo]
     [-use_sw_tback] [-version]
+
+# To download blastp 2.6 in ubuntu 2016
+https://ngsprimer.wordpress.com/

@@ -1,1 +1,3 @@
 concate.drop(columns = ["Unnamed: 0"]) #Drop Column by Column Name
+df.column_name.value_counts(normalize = True)
+df.sort_values(by = "Total day charge" , ascending = False).head()
