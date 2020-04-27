@@ -28,3 +28,11 @@ export PATH=$PATH:/place/with/the/file
 e.g. 
 export PATH=$PATH:/BiO/ortho_krish/ncbi-blast-2.6.0+/bin/
 # The location of file or folder which you want to add in the path
+
+
+## for samtools bamtools and other
+https://gist.github.com/adefelicibus/f6fd06df1b4bb104ceeaccdd7325b856
+
+
+
+$# is a special variable in bash, that expands to the number of arguments (positional parameters ) i.e $1 , $2... passed to the script

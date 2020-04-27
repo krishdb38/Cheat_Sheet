@@ -1,1 +1,5 @@
 https://www.nbcnews.com/health/health-news/six-genes-linked-preterm-births-n799361
+
+
+# samtools to create index file for bam file
+samtools index filename.bam
