@@ -1,2 +1,2 @@
-# Cheat_Sheet
-Cheat_Sheet for daily use
+# CheatSheet
+Tkinter cheat sheet , python Gui 

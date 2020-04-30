@@ -1,0 +1,276 @@
+import numpy as np
+
+
+
+np.full((2,2),7) #2x2 full Matrix of 7
+np.ones(2,2)  #2x2 matrix of 1
+np.eye(2)
+np.random.random((2,2)) #2x2 random Matrix
+#+ - *  / all element wise operations means operation by same index
+a.dot(b) ==> matrix Multiplication
+np.dot(a,b) ==>matrix Multiplication
+np.empty((2,3)) # empty matrix of 2X3
+np.range(from,to,gap) #not list
+np.linspace(from,to,number)
+np.linspace(0,10,20) # 20 Numbers between 0-10
+np.array()
+np.asanyarray(list)
+np.copy(x) == np.array(a,copy = True)
+np.mgrid() #which returns a dense multi-dimensional "meshgrid"
+np.mat()  #interpret the input as a matrix
+
+np.diagonal() #Extract a diagonal or construct a diagonal array
+np.diagflat() #keep in diag position
+np.tri() # An array with ones at and below the given diagonal and zeros elsewhere
+np.tri(12,12) #below 50% 1 and above is 0
+np.linspace(start,stop,number) #Return evenly spaced numbers over a specified interval
+np.linspace(0,4,8) #0,0.5,1,... total 8 numbers inside
+
+
+
+empty_like
+Return an empty array with shape and type of input.
+ones_like
+Return an array of ones with shape and type of input.
+zeros_like
+Return an array of zeros with shape and type of input.
+full_like(x,1,dtype) #same shape x and fill 1
+
+Return a new array with shape of input filled with value.
+empty
+Return a new uninitialized array.
+ones
+Return a new array setting values to one.
+zeros
+Return a new array setting values to zero.
+full((5,20),VALUE) #fULL matrix of 5,20 size
+Return a new array of given shape filled with value.
+
+a = np.array([........])
+a = ndarray
+a.dim
+a.dtype #data type int,float,...
+a.flags #info about memory layout of the array
+a.shape #Shape of created array
+a.strides #tuple of bytes to step in each dimension when traversing an array
+a.ndim #Number of dimension
+a.data  #elements inside Metrics
+a.size   # total number of elements inside metrix (row x col)
+a.real   #real Part of the array
+a.buffer # object exposing buffer interface,optional Used to fill the array with data
+a.offset  #int,optional offset of array data in buffer.
+a.order #Row-major C-Style or column- major
+a.item# Copy an element of an array to a standard Python scalar and return it.
+a.itemsize # Int 
+a.nbytes   #Total size of memory #
+a.base     #base array7 is where the array data is actually stored.
+# Data Type
+a.dtype #Data-type of the array's element
+a.T # Transposed array
+a.real # The real part of the array
+a.imag #the imaginary part of the array
+a.flat #1-D iterator over the array
+a.ctypes # An object to simplify the interaction of the array with the ctypes module
+#array interface
+
+
+
+#Arthmetic Operation
+a+a #element wise addition
+a-a # element wise operation 
+#Simple arthmetic operation produce element wise operation 
+#same shape array can only be done element wise operation
+
+
+
+
+__array_interface__#python side of the array interface
+__array_struct__ #C-typeof the array interface
+
+# ctypes foreign function interface
+a.ctypes #An object to simplify the interaction fo the array with the ctypes module
+
+# Array Methods
+An ndarray object has many methods which operate on or with the array in some fashion, typically returning an array result.These methods are below
+
+For the Following methods there are also corresponding functions in numpy: any,all , argmax, argmin , argpartition, argsort , choose , reshape , round , searchsorted, sort, squeeze , std , sum , swapaxes , take, trace, transpose, var
+np.copyto() #copy to 
+np.reshape() == a.reshape()
+np.ravel() #Return a contiguous flattned array
+np.moveaxis(a,source,destination)
+np.rollaxis(a,axis,start =0) #Roll the specified axis backwards, untill it lies in a given position.
+#bring that axis position in start position
+np.swapaxes(a,axis1,axis2)#Interchange two axes of an array
+np.atleast_1d(*arys) #Converts inputs to arrays with atleast one dimension
+np.atleast_2d(*arys)  #Converts inputs as arrays with atleast two dimension
+np.atleast_3d(*args) #Converts inputs as atleast 3 dimensions
+np.broadcast_arrays(*args,**kwargs)
+np.expand_dims(a,axis) #expand the shape of an array
+np.squeeze(a,axis = None) #Remove single-dimensional entries from the shape of an array
+np.asfarray(amdtype,..)  #Convert to float array
+np.asfortranarray(a,dtype=none) #return an array (ndim>=1)
+np.asscalar(a) #Convert an array of size 1 to its scalar equivalent
+a.item() # use instead of np.asscalar
+np.require(a,dtype= NOne,requirements = None)
+np.concatenate((a1,a2,...),axis =0,out = None)
+np.stack(array,axis = 0,out = None) #Join a sequence of arrays along a new axis
+np.column_stack(tup) #Stack 1-D arrays as columns into a 2-D array
+np.dstack(tup) #Stack arrays in sequence depth wise (along third axis)
+np.hstack(tup) #Stack arrays in sequence horizontally (Column wise)
+np.vstack(tup) #Stack arrays in sequence vertically(row wise).
+np.split(ary,indices_or_section,axis = 0) #split array into multiple sub-aarrays
+np.array_split(ary,indices_or_section,axis=0) #the only diff is that array_split allows indices_or_sections to be an integer.
+np.dsplit(ary,indices_or_sections) #split array into multiple sub-arrays along the 3rd axis(depth)
+np.hsplit(ary,indices_or_sections)  #split an array into multiple sub arrays horizontally (col-wise)
+
+a.item(*args) #arg position
+a.tolist() #Return the array as an a.ndim -levels deep nested list of Python scalars.
+a.itemset(index,value) #set the value in index position
+a.tostring([order]) #Construct Python bytes containing the raw data bytes in the array
+a.tobytes([order]) #Construct Python bytes containing the raw data bytes in the array
+a.tofile(fid[,sep,format]) #Write array to a file as text or binary 
+a.dump(file) #Write array  to a file as text or binary (default)
+a.dumps() #Returns the the pickleof the array as a string
+a.astype(dtype[,order,casting,..]) #Copy of the array, cast to a specified type
+a.byteswap()  #Swap the bytes bytes of the array elements
+a.copy([order]) #Returna copy of the array
+a.view([dtype, type]) #New view of array with the same data
+a.getfield(dtype[,offset]) #Returns a field of the given array as a certain type.
+a.setflags([write,align,uic]) #  Setflags WRITEABLE, ALIGNED, (WRITEBACKIFCOPY and UPDATEIFCOPY), respectively.
+a.fill(value)
+
+### Shape Manipulation ##
+For reshape, resize, and transpose, the single tuple argument may be replaces with n integers which will be interpreted as an n-tuple
+a.reshape(shape[,order]) #Returns an array containing the same data with a new shape
+a.resize(new_shape [,refcheck]) #Change shape and size of array in place
+a.transpose(*axes) #Returns a view of the array with axes transposed
+np.swapaxes(a,axis1,axis2) #Return a view of  the array with axis1 and axis2
+a.flatten([order]) #Return a copy of the array collapsed into one dimenstion
+a.ravel([order]) #Return a flattened array
+a.squeeze([axis]) #Remove single-dimensional entries from the shape of a.
+
+#Item Selection and manipulation
+# For array methods that take an axis keyword, it defaults to None. If axis is None, then teh array is treated as a 1-D array. Any other value for axis represents teh dimension along which the operation should proceed.
+
+a.take(indices[,axis,out,mode]) # Return an array formed the elements of a at the given indices.
+a.put(indices,values[,model]) # Set a.flat[n] = values[n] for all n in indices.
+a.repeat(repeats[,axis]) #Repeat elements of an array
+a.choose(choices[,out,mode]) #Use an index array to construct a new array from a set of choices
+a.sort(axis,kind,order]) #Sort an array in place.
+a.argsort([axis,kind,order]) Returns the indices that would sort this array 
+a.partition (kth[,axis, kind,order]) #Rearranges the elements in the array in such a way that the value of the element in kth position is in the position it would be in a sorted array.
+
+a.argpartition(kth[,axis,kind,order])  # Returns the indices that would partition this array.
+a.searchsorted(v[,side,sorter])   #  Find indices where elements of v should be insertedin a to maintain order.
+a.nonzero()  # Return  the indices of the elements that are non-zero
+a.compress(condition[,axis,out]) #Return selected slices of this array along given axis
+a.diagonal([offset,axis1,axis2])  # Return specified diagonals.
+
+## 
+a.max([axis,out,keepdims, initial,...])    # Return the maximum along a given axis
+a.argmax([axis,out])   #Return indices of the maximum values along the given axis
+a.min([axis, out])  #Return indices of the minimum values along the given axis of a
+a.argmin([axis,out]) #Return indices of the minimum values along the given axis of a.
+a.ptp ([axis,out])  #Return indices of the maximum values along the given axis.
+a.clip([min,max,out]) #Returnan array whose values are limited to [min,max]
+a.conj()   #Complex-conjugate all elements
+a.round([decimals,out])  #Return a with each element rounded to the given number of decimals.
+a.trace([offset,axis1,axis2,dtyep,out]) #
+a.sum([axis,dtype,jout]) #Return the sum of the array elements over the given axis
+a.cumsum([axis,dtype,out]) # Return the cumulative sum of the elements along the given axis
+a.mean([axis,dtype,out,keepdims])#Returns the average of the array elements along given axis
+a.var([axis,dtype,out,ddof,keepdims]) #Returns the variance of the array elements, along given axis
+a.std([axis,dtype, out,ddof,keepdims]) #Returns the standard deviation of the array elements along given axis
+a.prod([axis,dtype,out,keepdims,...]) #Return the product of the array  elements over the given axis
+a.cumprod([axis,dtype,out]) #Return the cumulative product of the elements along the given axis
+a.all([axis,out,keepdims]) #Returns True if all elements evaluate to True
+a.any([axis,out,keepdims]) # Returns True if any if any of the elements of a evaluate to True.
+
+### Arthmetic, Matrix multiplication, and comparison operations
+# Arthmetic and comparison operations on ndarrays are defined as element-wise operations, and generally yield ndarray objects as results.
+a.__it__(self,value,/) #Return Self<value less than
+a.__le__(self,value,/) #Return self<=value less equal
+a.__gt__(self,value,/) #Return self>=value greater than
+a.__ge__(self,value,/) #Return self>=value greater equal
+a.__eq__(self,value,/) #Return self==value equal value
+a.__ne__(self,value,/) #Return self != value not equal value
+
+## Truth Value of an array (bool)
+a.__bools__(self,/) self !=0 (Truth i.e. Not equal to 0
+
+##Unary Operations:
+a.__neg__(self,/)  # - self change all value to _
+a.__pos__(self,/)  # +self 
+a.__abs__(self) ##Absolute value
+a.__invert__(self,/_ ~self
+
+
+
+###Arthmetic
+a.__add__(self,value,/) # Return self+ value Addition
+a.__sub__(self,value,/) # Return self - value Substraction
+a.__mul__(self,value,/) #Return self *value Multiplication
+a.__truediv__(self,value,/) #Return self/value
+a.__floordiv__(self,value,/) #Return self//value
+a.__mod__(slef,value,/)   # Returtn self % value
+a.__divmod__(self,value,/) #Return divmod(self ,value)
+a.__pow__(self,value[,mod]) #Return pow(self,value,mod)
+a.__lshift__(self,value,/)    #Return << value
+a.__rshift__(self,value,/)    #Return self <<value
+a.__and__(self,value,/)      #Return self & value
+a.__or__(self,value,/)        #Return self | Value
+a.__xor__(self,value,/)       #Return self ^ value
+
+
+
+## Arthmetic, in place:
+a.__iadd__(self,value,/)   #Return self+=value
+a.__isub__(self,value,/)    # Return self -= value
+a.__imul__(self,value,/)    # Return self *=value
+a.__itruediv__(self,value,/)#Return self/= value
+a.__ifloordiv__(self,value,/)#Return self//=value
+a.__imod__(self,value,/)    #Returnself%= value
+a.__ipow__(self,value,/)     #Return self** = value
+a.__ilshift__(self,value,/)     #Return self <<= value
+a.__lrshift__(self,value,/)     #Return self >>= value
+a.__iand__ ( self,value,/)     #Return self &= value
+a.__ior__(self,value,/)         #Return self |or value
+a.__ixor__(self,value,/)       #Return self ^= value
+####
+a.__matmul__(self,value,/)   #Return self@value
+
+## Special Methods
+
+## For Standard Library Functions
+a.__copy__()  # Used if  copy.copy is called on an array
+a.__deepcopy__()#Used if copy.deepcopy is called on an array
+a.__reduce__() # For pickling
+a.__setstate__(state,/) # For unpicklilng.
+## Basic Customization
+a.__new__(\*args,|*\*kwargs) #Create and return a new object
+a.__array__() #Returns either a new reference toself if dtype is not given or a new array of provided data type if dtype is different from the current  dtype of the array.
+a.__array_wrap__()  #Container Customization : ( see Indexing)
+
+##
+a.__len__() #Return len(self)
+a.__getitem__(self,key)  #Return self[key] 
+a.__setitem__(self,key,value,/) #set self[key] to value
+a.__contains__(self,key,/)       #Return key in self
+
+##Conversion; teh operations int float and complex. They work only on arrays that have one element in them and return the appropriate scalar.
+
+a.__int__(self)
+a.__float__(self)
+a.__complex__(self)
+
+## String Operations:
+a.__str__(self,)     #Return str(self)
+a.__repr__(self,/)  #Return repr(self)
+
+
+
+#### numpy.matlib  ###########
+
+
+
+

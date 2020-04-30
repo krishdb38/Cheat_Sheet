@@ -1,0 +1,125 @@
+Button (activebackground,activeforeground,bd,command,fg, font,height,highlightcolor, image,justify
+padx,pady,relief,state,underline,width,wraplength)
+
+
+Canvas(root, options,....,)
+	bd,bg,confine,cursor,height,highlightcolor,relief,scrollregion,width,xscrollincrement,
+	xscrollcommand,yscrollincrement,yscrollcommand
+	Canvas.create_arc(coord'4 points',start=0,extent=150,fill="blue")
+	canvas.create_image(50,50,anchor=NE,image=filename)
+	canvas.create_line(x0,y0,x1,y1,....xn,yn,options)
+	canvas.create_oval(x0,y0,x1,y1,options)
+	canvas.create_polygon(x0,yo,x1,y1,...xn,yn,options)
+ 
+	
+Checkbutton(root, options, ....)
+	options:
+	activebackground,bg,bitmap,bd,command,cursor,disableforeground,font,fg,height,highlightcolor
+	image,justify,offvalue,onvalue,padx,pady,relief,selectcolor,selectimage,state,text,underline
+	variable,width,wraplength
+	
+Method:-deselect(), flash(),invoke() select() , toggle(), 
+
+deselect():-Clears(turns off) the checkbutton ,
+flash():-Flashes the checkbutton a few times between its active and normal colors,but leaves it the way it started
+invoke() , select() , toggle()
+	
+Entry(root,options,....)
+	Options:-bg ,bd , command , cursor , font , exportselection , fg , highlightcolor, justify ,
+	relief , selectbackground , selectbackground , selectborderwidth , selectforeground , show
+	state , textvariable , width , xscrollcommand
+	
+Methods:- delete(first , last = None) , get() , icursor(index),index(index),insert(index,s),
+		select_adjust(index) , select_clear(),select_from(index),select_present(),select_range(start,end)
+		select_to(index),xview(index),xview_scroll(number,what)
+		
+Frame (root,options,....):-Frame(root,options,....,)
+	Options:-bg , bd , cursor , height , highlightcolor , highlighcolor , hightlightthickness, relief,
+	width
+
+
+Label(root,options,....)
+	Options:- anchor , bg , bitmap , bd , cursor , font , fg , height , image , justify , padx , pady ,\
+	relief ,, text , textvariable ,underline , width , wraplength , 
+	
+Listbox(root,options...)
+	Options:-bg ,cursor , font , fg , height ,highlightcolor , highlightthickness , relief ,
+	selectbackground , selectmode (BROWSE , SINGLE , MULTIPLE , EXTENDED) ,width ,xscrollcommand , yscrollcommand
+	Methods:-active(index) , curselection , delete(first,last=None), get(first,last=None),index(i),insert(index , *elements)
+	nearest(y) , see(index) , size(), xview() , xview_moveto(fraction) , xview_moveto(fraction),
+	xview_moveto(fraction) , xview_scroll(number,what) ,yview_moveto(fraction) , yview_scroll(number,what)
+
+Menubutton(root,options,....)
+	Options:-activebackground,activeforeground,anchor, bg , bitmap , bd , cursor,disableforeground ,fg ,height,
+	highlightcolor,image,justify ,menu,padx , pady, relief , state , text , textvariable,underline,width,wraplength
+
+Menu(root,options,...)
+	Options:-activebackground,activeborderwidth, activeforeground , bg , bd, cursor , disableforeground ,
+	font , fg , postcommand , relief , image , selectcolor , tearoff , title
+	
+	Methods:- add_command(options) ,add_radiobutton(optins) , add_checkbutton(options),add_cascade(options) , add_separator(),
+		add(type,options) , delete(startindex[,endindex]),entryconfig(index,options) , index(item),insert_separator(index),
+		invoke(index) , type(index) 
+
+Message(root,options,...)
+	Options:-anchor , bg , bitmap , bd , cursor , font , fg ,height , image ,justify ,padx , pady , relief,text , textvariable ,
+	underline , width , wraplength ,
+
+Radiobutton(root,optins,...)
+	Options:-activebackground,activeforeground , anchor , bg ,bitmap , borderwidth command , cursor , font , fg , height , highlightbackground,image ,
+	justify , padx , pady , relief , selectcolor ,selectimage , state , text , textvariable, underline ,
+		value , variable , width , wraplength
+		
+	Methods:-deselect() , flash() , invoke() , select() , 
+
+Scale(root,options,...)
+	Options:- activebackground , bg , command , cursor , digits , font , fg , from_ ,highlightbackground,highlightcolor, label
+		length,orient, relief, repeatdelay , resolution,showvalue , sliderlength , state , takefocus ,tickinterval,to,
+		throughcolor , variable , width ,
+	Mothods:-get() , set(value) ,
+Scrollbar(root,options,...)
+	Options:-activebackground , bg, bd ., command , cursor ,elementborderwidth , highlightbackground , highlightcolor , highlightthickness , jump,
+		orient , repeatdelay , repeatinterval , takefocus , troughcolor , width ,
+	Methods:get() , set(first,last)
+
+Text(root,options,...)
+	Options:-bg , bd , cursor , exportselection , font , fg , height , highlightbackground , highlightcolor ,
+		hightlightthickness , insertbackground ,insertborderwidth , insertofftime , insertontime , insertwidth
+		padx , pady, relief,selectbackground , selectborderwidth , spacing1 , spacing2 ,  spacing3 , state , tabs,
+		state , tabs , width , wrap ,xcrollcommand , yscrollcommand
+		Methods:- delete(startindex, [,endindex]) , get(startindex[,endindex]) , index(index) ,see(index),
+		Methods:-index(mark) , mark_gravity(mark[,gravity]) , mark_names() , mark_set(mark,index) ,mark_unset(mark)
+	Methods&Description:-
+		tag_add(tagname,startindex[,endindex]..),tag_config,tag_delete(tagname) ,tag_remove(tagname[,startindex[.endindex]...]
+		
+Toplevel(root,options)
+	Options:-bg , bd , cursor , class_ , font , fg , height , relief , width , 
+	Methods:- deiconify() , frame() , group(window) , group(window) , iconify() ,state() ,transient([master]),
+		withdraw() , maxsize(width,height) , minsize(width,height) positionfrom(who) ,resizable(width,height) ,sizefrom(who),title(string)
+		
+Spinbox(root,options)
+	Options:-activebackground , bg , bd , command , cursor , disablebackground , disableforeground , fg , font ,
+	format , from_ , justify , relief , repeatdelay , repeatinterval , state , textvariable , to , validate , validatecommand,
+	values , vcmd , width ,xscrollcommand ,
+	Methods:-delete(startindex [,endindes]) , get(startindex [,endindex]), identify(x,y) ,index(index) , 
+	insert(index[,string...],invoke(element)
+	
+	
+PanedWindow(root,options,..,)
+	Options:-bg , bd , borderwidth , cursor , handlepad , handlepad , handlesize , height , orient ,
+		relief,sashcursor , sashrelief,sashwidth , showhandle , width
+	Methods:- add(child,options),get(startindex[,endindex]) ,config(options)
+
+LabelFrame(root,options,...)
+		Options:-bg , bd , cursor , font , height , labelAnchor , highlightbackground , highlightthickness,
+		relief , text , width , 
+
+tkMessageBox :- tkMessaqgeBox module is used to display message boxes in your applications.
+Syantax:
+	tkMessageBox.FunctionName(title , message [,options])
+	FunctionName:-name of the appropriate message box function.
+	title:- text to be displayed as a message
+	options:- alternatiove choices that you may use to tailor astandard message box.
+tkMessageBox:-functions:-
+showinfo() , showwarning() , showerror() , askquestion() ,askokcancel() ,askyesno() ,askretrycancel() ,
+	

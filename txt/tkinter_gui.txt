@@ -1,0 +1,32 @@
+#Button
+#Canvas
+#Checkbutton
+#Entry
+#Frame
+#Label
+#Listbox
+#Menu
+#Message
+#Radiobutton
+#Scale
+#Scrollbar
+#Text
+#Toplevel
+#Spinbox
+#PanedWindow
+#LabelFrame
+#tkMessageBox
+############################################
+***** Standard Attributes
+# Dimension
+# Colors
+# Fonts
+# Anchors
+# Relief styles
+# Bitmaps
+# Cursors
+
+####### Geometry Management################
+pack() :- This geometry manager organizes widgets in blocks before placing them in teh parent widget.
+grid()  :- This geometry managenr organizes widgets in a table-like structure in the parent widget.
+place() :-  This geometry manager organizes widgets by placing them in a specific position in the parent widget.

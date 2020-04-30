@@ -1,0 +1,30 @@
+# To check python code 
+pycodestyle --first program_name.py
+pep8 program_name.py
+flake8 -- max-cognitive-complexity=15 program_name
+pylint python_code.py
+bandit
+
+
+E261 --> atleast 2 spaces before inline comment
+E262 --> inline comment should start with "#"
+E231 --> Missing whitespace after "," 
+# Bare except
+
+
+
+
+
+#####################python continue,break,pass.. ###########################
+The continue statement gives you the option to skip over the part of a loop where an external condition is triggered, but to go on to complete the rest of the loop
+
+
+#####################
+Python Version control in linux
+http://ubuntuhandbook.org/index.php/2017/07/install-python-3-6-1-in-ubuntu-16-04-lts/ 
+https://phoenixnap.com/kb/how-to-install-python-3-ubuntu
+
+
+
+#### Converting python app to desktop Files
+https://dev.to/eshleron/how-to-convert-py-to-exe-step-by-step-guide-3cfi

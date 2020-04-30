@@ -1,0 +1,45 @@
+setwd("path")
+
+dim(df)   #shape of Data Frame
+nrow(df)
+ncol(df)
+head(df)
+tail(df)
+str(df)#change to str
+table(iris[,"Species"])
+colSums(df[,-5]) #except 5col\
+colMeans(df[,-5])
+rowSums(iris[,-5])
+rowMeans(iris[,-5])
+subset(df,Col =="...")
+subset(df,col _condition)
+subset(iris,Sepal.Length>5.0 &Sepal.Width>4.0)
+matrix(1:20,4,5)
+#4x5 matrix
+
+df[,"Col_NAME"]
+df[,Int_Number] = df[int_Num]
+df$Col_Names
+function = function(parameter_..){
+.....return()
+}
+matrix()
+length()
+?print()
+class(data) #data type Numeric
+#type() in python
+class(df/matrix, vector..)
+is.matrix(df...)
+is.data.frame(df..)
+is.
+
+as.numeric(data) #change to number
+colnames(df)
+names(df)
+rownames()
+row.names()
+rownames()#matrix row name
+colnames() # col name
+df[rowname]#display row
+df[:,c(1:3)] #All Row 1;3 col
+iris[1:5,) #All Col 1-5 row
