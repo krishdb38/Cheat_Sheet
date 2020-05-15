@@ -1,0 +1,13 @@
+tensor.numpy() # Print as nd array
+
+# variable creation 
+v = tf.Variable( array)
+constant_variable = tf.constant(array)
+
+
+
+
+
+# tf.keras.
+## Modules
+#### activations
