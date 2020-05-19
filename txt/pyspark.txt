@@ -1,0 +1,6 @@
+spark.read.csv()
+spark_df.show()
+spark_df.take() #show elements in rows
+spark_df.columns # Col Name
+spark_df.printSchema() #
+spark_df.select("col1" , "col2",....) # display selected columns name

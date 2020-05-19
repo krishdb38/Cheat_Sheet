@@ -1,0 +1,41 @@
+python -m django --version
+(-m module )
+
+## First step start Project
+python -m django startproject project_name
+
+## Second step start app
+## Inside 1 app there may be many app
+
+change working directory where manage.py exist
+python manage.py startapp app_name
+
+# need to create application
+# inside folder app_name where manage.py exists
+python manage.py startapp app_name # like students
+
+# for data base need to student 
+
+
+
+# start a new project 
+django-admin startproject project_name
+
+
+## My Sql Data base connection
+# settings.py
+# Database
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'DB_name',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'DB_user',
+        'PASSWORD': 'DB_password',
+    }
+}
+
+##python manage.py makemigrations
+## python manage.py migrate

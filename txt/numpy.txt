@@ -6,6 +6,7 @@ np.full((2,2),7) #2x2 full Matrix of 7
 np.ones(2,2)  #2x2 matrix of 1
 np.eye(2)
 np.random.random((2,2)) #2x2 random Matrix
+np.random.seed(100) # after calling seed and calling random will not change the elemetns of random 
 #+ - *  / all element wise operations means operation by same index
 a.dot(b) ==> matrix Multiplication
 np.dot(a,b) ==>matrix Multiplication

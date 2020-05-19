@@ -1,0 +1,16 @@
+mysql -u root -p
+show databases
+use database_name
+
+# Selecting a database when log in 
+mysql -u root db_name -p 
+
+#to run codes from text file sql file
+mysql > source mysql_database_file.sql # Note file is in same directory or Full path require
+
+
+# Creating a new database
+create database if not exists dbname;
+create database dbname;
+
+DROP DATABASE testdb;

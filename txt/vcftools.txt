@@ -21,3 +21,10 @@ $: make -j 8 -C /TN1911D0102/
 
 Filter Command:
 $:gzip -dc TN1911D0102.vcf.gz | gvcftools/bin/extract_variants | awk '/^#/ || $7 == "PASS" '> TN1911D0102.PASS.vcf
+
+
+
+
+##### Merge Multiple VCF Files as one
+https://gatkforums.broadinstitute.org/gatk/discussion/12470/3-ways-to-merge-vcf-files-which-one-is-preferred
+https://www.biostars.org/p/300745/
