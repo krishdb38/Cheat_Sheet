@@ -1,0 +1,12 @@
+nbextensions
+https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/
+
+
+## :Increase Memory size
+) Generate Config file using command:
+jupyter notebook --generate-config
+2) Open jupyter_notebook_config.py file situated inside 'jupyter' folder and edit the following property:
+NotebookApp.max_buffer_size = your desired value
+
+## Alternatively 
+jupyter notebook --NOtebookApp.max_buffer_size = Your_Size

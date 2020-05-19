@@ -12,3 +12,10 @@ samtools view -b -s -o .........output_bam...   input_sam_file
 
 
 ## Samtools Sorting & Indexing
+
+##
+samtools sort -n -o out_put_file.bam input_file.bam # Sort according to index
+
+
+# To make a small bam File 
+samtools view -b -o Original_bam_file -s Percent_of_Fraction_like_0.3 Output_bam_file_with_space.bam

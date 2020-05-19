@@ -269,8 +269,107 @@ a.__str__(self,)     #Return str(self)
 a.__repr__(self,/)  #Return repr(self)
 
 
+## Functions and Methods Overview
+### Array Creatiion
+arange
+array
+copy
+empty
+empty_like
+eye
+fromfile
+fromfunction
+identity
+linspace
+logspace
+mgrid
+ogrid
+ones
+ones_like
+r_zeros
+zeros_like
+
+### Conversions
+ndarray.astype
+atleast_1d
+atleast_2d
+atleast_3d
+mat
+
+### Manipulations
+array_aplit,
+column_stack
+concatenate
+diagnola
+dsplit
+dstack
+hsplit
+hstack
+ndarray.item
+newaxis
+ravel
+repeat
+reshapr
+resize
+squeeze
+swapaxes
+take
+transpose
+vsplit
+vstack
+
+
+## Questinos
+all
+any 
+nonzero
+where
+
+## Ordering
+argmax
+argmin
+argsort
+max
+min
+ptp
+searchsorted
+sort
+
+### Operations
+choose
+compress
+cumprod
+cumsum
+inner
+ndarray.fill
+imag
+prod
+put
+putmask
+real
+sum
+
+## Basic Statistics
+cov
+mean
+std
+var
+
+###Basic Linear Algebra
+cross
+dot
+outer
+linalg.svd
+vdot
+
+## Numpy help Menu
+np.array? # ? sign will display help menu
+np.lookfor("create array") # Search results for "Create array"
+np.con*?
+
 
 #### numpy.matlib  ###########
+
 
 
 
