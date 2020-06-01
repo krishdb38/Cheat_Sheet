@@ -1,0 +1,34 @@
+# WIFI_Penetration_testing
+airmon-ng  # show the internet interface
+airmon-ng start wlan0
+# this will create a new wifi interface in the network 
+# check with ifconfig ( generally wlan0mon)
+airmon-ng start wlan0mon # diff option stop | check 
+
+airodump-ng wlan0mon # will display all router informations
+# select mac address of target router
+# to monitor packets in specific router 
+# -c is for channel --bssid braodcast id MAC address -w write file address
+
+
+airodump-ng -c 4 --bssid - w file_location_to_save
+
+# 10 is deauthorization  -a router_mac address -c client_mac from early step
+#aireplay-ng -0 10 -a mac_add_mon0_wlan -c mac_address  wlan0mon
+
+
+
+
+
+
+
+# nmap port scanner
+nmap -A ip_address
+nmap -A 192.168.0.1/24 # all Network
+
+
+
+
+# ipcalc software show ip info details
+# sudo apt install ipcalc
+n

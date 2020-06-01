@@ -33,10 +33,19 @@ export PATH=$PATH:/BiO/ortho_krish/ncbi-blast-2.6.0+/bin/
 ## for samtools bamtools and other
 https://gist.github.com/adefelicibus/f6fd06df1b4bb104ceeaccdd7325b856
 
+=======
+# alias is used to make your own command 
+alias l="la -lh"
+
+
+## vim Setting
+>>>>>>> 15c93ac7a995f0a1fc6622f477e35336469bc843
+
 
 
 $# is a special variable in bash, that expands to the number of arguments (positional parameters ) i.e $1 , $2... passed to the script
 
+<<<<<<< HEAD
 ## Code to Remove CHR in Linux Code
 1. Remove 'chr' from the chromosome notation:
 

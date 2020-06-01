@@ -1,0 +1,37 @@
+### Switch setting
+--> en  # Enable switch
+--> show vlan # show the details of defaults or preset vlan settings
+-->conf t  # Configure Mode
+--> vlan 50
+--> ? # show the manual help
+"""
+There are 4 options
+exit 
+name
+no
+remote-span
+""
+--> name student # any name for vlan
+--> vlan 99
+--> name management
+--> vlan 100
+--> show vlan # can see new settings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
