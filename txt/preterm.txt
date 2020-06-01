@@ -1,0 +1,201 @@
+## Genese Behind Preterm Birth
+## All Col
+['#Chr', 'Start', 'End', 'Ref', 'Alt', 'Ref.Gene', 'Func.refGene',
+  'ExonicFunc.refGene', 'Gene.ensGene', 'avsnp147', 'AAChange.ensGene',
+   'AAChange.refGene', 'clinvar: Clinvar ',' InterVar: InterVar and Evidence ', 'Freq_gnomAD_genome_ALL',
+   'Freq_esp6500siv2_all', 'Freq_1000g2015aug_all', 'CADD_raw','CADD_phred', 'SIFT_score', 'GERP++_RS',
+   'phyloP46way_placental','dbscSNV_ADA_SCORE', 'dbscSNV_RF_SCORE', 'Interpro_domain','AAChange.knownGene',
+'rmsk', 'MetaSVM_score', 'Freq_gnomAD_genome_POPs', 'OMIM', 'Phenotype_MIM', 'OrphaNumber','Orpha', 'Otherinfo'],
+# Unique Values inside ClinVar Column
+['clinvar: UNK ', 'clinvar: Benign ', 'clinvar: Likely_benign ',
+       'clinvar: Uncertain_significance ',
+       'clinvar: Benign/Likely_benign ',
+       'clinvar: Benign/Likely_benign,_other ',
+       'clinvar: Conflicting_interpretations_of_pathogenicity,_other,_risk_factor ',
+       'clinvar: drug_response ', 'clinvar: association ',
+       'clinvar: not_provided ',
+       'clinvar: Conflicting_interpretations_of_pathogenicity ',
+       'clinvar: risk_factor ', 'clinvar: Pathogenic ',
+       'clinvar: protective,_risk_factor ', 'clinvar: protective ',
+       'clinvar: Pathogenic,_risk_factor ',
+       'clinvar: Conflicting_interpretations_of_pathogenicity,_protective ',
+       'clinvar: Affects,_risk_factor ', 'clinvar: Affects,_association ',
+       'clinvar: Benign/Likely_benign,_protective ', 'clinvar: Affects ',
+       'clinvar: other ', 'clinvar: Likely_pathogenic ',
+       'clinvar: association,_risk_factor ',
+       'clinvar: Benign/Likely_benign,_risk_factor ',
+       'clinvar: Benign,_risk_factor ',
+       'clinvar: Benign/Likely_benign,_drug_response,_risk_factor ',
+       'clinvar: drug_response,_protective,_risk_factor ',
+       'clinvar: Pathogenic,_protective ',
+       'clinvar: Likely_benign,_drug_response,_other '], dtype=object)
+Unique Values inside 'ExonicFunc.refGene' Column
+'synonymous SNV', 'nonsynonymous SNV',
+       'nonframeshift insertion', 'nonframeshift deletion', 'unknown',
+       'stopgain', 'frameshift insertion', 'frameshift deletion',
+       'startloss', 'stoploss']
+
+Unique Values inside Func.refGene 
+'ncRNA_exonic', 'ncRNA_intronic', 'intergenic', 'exonic',
+       'upstream', 'downstream', 'intronic', 'UTR3',
+       'upstream;downstream', 'UTR5', 'ncRNA_splicing', 'splicing',
+       'ncRNA_exonic;splicing', 'exonic;splicing', 'UTR5;UTR3',
+       'ncRNA_UTR5']
+
+# Unique values inside INterVar Column is 256 which is greater
+
+
+
+
+
+
+
+
+case = ['1119','910','873','1489','989','880','1282','1584','875','1009','MWB_110',
+        'MWB_161','MWB_174','MWB_242','MWB_276','MWB_437','MWB_490','MWB_506',
+        'MWB_540','MWB_548','MWB_564','MWB_626','MWB_719','MWB_740','MWB_746',
+        'MWB_815','MWB_870','MWB_1226','MWB_1276',
+        'MWB_1445']
+
+
+control = ['1093','1134','1293','1316','1389','1428','1477','1481','1557','1591','MWB_895','MWB_911',
+           'MWB_941','MWB_956','MWB_961',"MWB_1008",'MWB_1040','MWB_1151','MWB_1244',
+           'MWB_1250','MWB_1443','MWB_1676','MWB_1960','MWB_1964','MWB_1975',
+           'MWB_1977','MWB_1982','MWB_1995','MWB_2007','MWB_2008']
+
+
+
+
+## In Our Data Sets there are Few Y Chromosome
+# So we need to delete
+#
+
+
+
+
+
+### Csv Files only Pathogenic
+
+873 Number From Indel 
+CASP8  Omim 601763  Related to Breast Cancer Related
+https://www.omim.org/entry/601763
+
+
+
+
+
+
+
+##### Types of Functional_refGene
+intergenic  --> located between genes. subsets of Non Coding DNA, Occasionally some intergenic DNA acts to control genes nearby , but most of it has no currently known function.
+It is one of the DNA sequences sometimes referred to as junk DNA, though it is only one phenomenon labeled such and in scientific studies today,
+
+
+Intron --> A splice site mutation is a genetic mutation that inserts, deletes or changes a number of nucleotides in the specific site at which splicing takes place during the processing of precursor 
+of messenger RNA into messanger RNA. Mutations in these sequences may lead to retention of large segments of intronic DNA by the mRNA or to entire exons being spliced out or the mRNA.
+These changes could result in production of a nonfunctional protein.
+
+
+Exon --> An Exon is any part of a gene that will encode a part of the final mature RNA produceds by that gene after introns have been removed by RNA aplicing.
+	Exonic are mutaions inside Coding regions
+
+
+
+
+ncRNA_UTR5  --> Non Coding RNA
+lncRNA   --> Long non-coding RNA
+
+3-UTR  --> the three prime untranslated region (3-UTR)
+UTR5 --> Five Prime Untranslated region (5 UTR) also known as a leader sequence or leader RNA is the region of an mRNA that is directly upsstream from the initiation codon.
+ncRNA_intronic   --> Non Coding RNA
+
+
+
+
+################ Final Memo For Analysis 
+** For INter var data set
+-- We will Focus on exonic genes Only which are very harmful and 
+
+
+
+
+
+
+
+
+#### Plink
+## Convert vcf file to plink
+./plink --vcf you_file_name
+
+
+
+## Plink Files Format details can be found in this sites
+https://www.cog-genomics.org/plink/1.9/formats
+
+1. .bed file Format
+Primary representation of genotype calls at biallelic variants. Must be accompanied by .bim and .fam files.
+
+( Do not Confuse this with the UCSC Genome Browser's BED format, which is totally different. )
+The two-bit genotype codes have the following meanings
+00 - Homozygous for first allele in .bam file
+01 Missing Genotype
+10 Heterozygous
+11 Homozygous for second allele in  .bim file
+
+
+If N is not divisible by Four, the extra high-order bits in the last byte of each block are always zero.
+
+For example, Consider the following text fileset;
+
+test.ped:
+  1 1 0 0 1  0  G G  2 2  C C
+  1 2 0 0 2  0  A A  0 0  A C
+  1 3 1 2 1  2  0 0  1 2  A C
+  2 1 0 0 1  0  A A  2 2  0 0
+  2 2 0 0 2  2  A A  2 2  0 0
+  2 3 1 2 1  2  A A  2 2  A A
+
+test.map 
+  1 snp1 0 1
+  1 snp2 0 2
+  1 snp3 0 3
+
+
+If you load it in Plink 1.9, a bed. file containing the following sequence of bytes will be autogenerated (You can view it with e.g. Unix xxd)
+0x6c 0x1b 0x01 0xdc 0x0f 0xe7 0x0f 0x6b 0x01
+and the following .bim file will accompany it
+
+
+  1  snp1  0  1  G  A
+  1  snp2  0  2  1  2
+  1  snp3  0  3  A  C
+
+For
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

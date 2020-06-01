@@ -36,3 +36,12 @@ https://gist.github.com/adefelicibus/f6fd06df1b4bb104ceeaccdd7325b856
 
 
 $# is a special variable in bash, that expands to the number of arguments (positional parameters ) i.e $1 , $2... passed to the script
+
+## Code to Remove CHR in Linux Code
+1. Remove 'chr' from the chromosome notation:
+
+awk '{gsub(/^chr/,""); print}' with_chr.vcf > no_chr.vcf
+
+2. Add chr before chromosome id
+
+awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' no_chr.vcf > with_chr.vcf

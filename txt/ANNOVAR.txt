@@ -12,3 +12,35 @@ Annotate_variation.pl
 annotate_variation.pl -geneanno -dbtype refGene -buildver hg19 example/ex1.avinput humandb/
 annotate_variation.pl -regionanno -dbtype cytoBand -buildver hg19 example/ex1.avinput humandb/ 
 annotate_variation.pl -filter -dbtype exac03 -buildver hg19 example/ex1.avinput humandb/
+
+
+
+
+## Manual
+https://freesoft.dev/program/136273895
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Inter_Var
+# InterVar takes either pre-annotated files, or unannotated input files in VCF format or ANNOVAR input format
+# if the input files are unannotated, InterVar will call ANNOVAR to generate necessary annotations. 
+
+
+https://davetang.org/wiki2/index.php?title=ANNOVAR
+
+
+
+
+###
+Meaning of Annovar Result Output
+

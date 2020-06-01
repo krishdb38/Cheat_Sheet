@@ -1,0 +1,1 @@
+addsnv.py --single -v ../rand_snp_100.bed -f 1135_V1.bam -o edited_.bam -r ../hg19.fasta --picardjar ../picard/build/libs/picard.jar --force -p 12 --mindepth 3 --minmutreads 1

@@ -33,3 +33,8 @@ https://dev.to/eshleron/how-to-convert-py-to-exe-step-by-step-guide-3cfi
 ### important library 
 import pandas_profiling as pp # easily analyse datas
 pp.ProfileReport(data)
+
+
+
+## Python subprocess .run 
+http://queirozf.com/entries/python-3-subprocess-examples#run-example-run-command-and-get-return-code
