@@ -105,8 +105,20 @@ plink --bfile merge_sample1 --logistic --recessive --ci 0.95 --out simple_logist
 ## Genotypic
 plink --bfile merge_sample1 --logistic --genotypic --ci 0.95 --out logistic_genotypic --allow-no-sex
 
+06- 08
+1. plink --file merge_sample1 --assoc --logistic --out assoc_logis_ci   --ci 0.95 # assoc logistic Only
+2. plink --file merge_sample1 --assoc --ci 0.95 --out assoc_only --allow-no-sex #Assoc Only
+3. plink --file merge_sample1 --model ci 0.95 --out model_only --allow-no-sex   # Model Only
 
 
+4.plink --file merge_sample1 --model --fisher -- ci 0.95 --out_model_fisher --allow-no-sex
+
+5.plink --file merge_sample1 --logistic --fisher -ci 0.95 --out logistic_fisher --allow-no-sex #out logistic_fisher.assoc.logistic
+
+6. plink --file merge_sample --fisher -ci 0.95 --out  Fisher_only #
+  
+7. plink --file merge_sample1 --model --fisher --logistic --recessive  --ci 0.95 --out model_fisher_geno_rec
+( All value NA deleted FIle )
 
 
 

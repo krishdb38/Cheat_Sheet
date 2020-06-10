@@ -1,0 +1,16 @@
+Primer is a short, single-stranded DNA sequence used in the polymerase chain reaction (PCR) technique.
+In the PCR method, a pair of primers is used to hybridize with the sample DNA and define the region of the DNA that will amplified.
+
+
+Primer refers to a small set of nucleotides of DNA, typically 18 to 24 base pairs in length.
+And a primer can be used for a multitude of other experimental process.
+You can use promer in PCR to target a locus to allow for amplification for further analysis.
+
+https://www.thermofisher.com/blog/behindthebench/designing-pcr-and-sanger-sequencing-primers-seq-it-out-5-2/
+
+Here are a few things to Kepp in mind 
+
+
+
+1. https://www.ncbi.nlm.nih.gov/tools/primer-blast/  # Site to Cut 
+
