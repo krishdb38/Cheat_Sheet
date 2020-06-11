@@ -1,0 +1,14 @@
+## Spark Configuration
+from pyspark.sql import SparkSession
+spakr = SparkSession.builder
+		     .appName("Your_Program_Name")
+		     .config("config.option", "value").getOrCreate()
+
+
+##Creating DF 2 Method
+df = spark.sparkContext.parallelize([("1", "joe"), (....)])\
+				.toDF(["COl1", "COl2",...])
+
+
+# Using Create DataFrame
+df = spark.create

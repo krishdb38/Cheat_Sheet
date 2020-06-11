@@ -1,0 +1,151 @@
+### From Server Manual
+Feature                     |  As Summary Statistic     | As inclusiion Criteria
+Missingness per individual  | --missing			| --mind N
+Missingness per marker 	    | --missing 		| --geno N
+Allele frequency 	    | --freq 			| --maf N
+Hardy-Weinberg equilibrium  | --hardy 			| --hwe N
+Hardy-Weinberg equilibrium  | --mendel 			| --me N M
+
+ --mind, --geno or --maf options are to the command line
+
+### 1. Missing rate per Persion
+plink --file mydata --mind 0.01
+(Which means exclude with more than 10% missing genotypes) A line in the terminal output will appear
+indicating how many individuals were removed due to low genotyping. If any individuals were removed,
+a file called ** plink.irem**
+
+
+With the high-missing-rate  individuals removed; alternatively, to create a binary fileset with these individuals removed:
+
+plink --file data --mind 0.1 --make-bed --out cleaned
+(which results in the files)
+	clearned.bed
+	cleaned.bim
+	cleaned.fam
+
+2. Allele Frequency 
+" Once individuals with too much missing genotype data have been excluded, subsequent analyses can be set to automatically exclude SNPs on the basis of MAF)
+plink --file my_input_data --maf
+(include SNPs with MAF >= 0.05 )
+
+
+3. Hardy-Weinberg Equilibrium
+(To exclude markers that failure the Hardy-Weinberg test at a specified significance threshold)
+plink  --file mydata --hwe 0.001
+(The standard asymptotic (1 df genotypic chi-squared test) can be requested with --hwe2 option instead --hwe)
+
+4. Mendel error rate 
+plink --file mydata --me 0.05 0.01 
+( The Two Parameters are 
+	i. first parameter determines that families with more than 5 % Mendel errors (Considering all SNPs) will be discarded.
+	ii. Second parameter indicates that SNPs with more than 10 % Mendel error rate will excluded (i.e. based on the number of trios)
+
+#####################Commands Passed in Server ######
+
+plink --file karesampleqc --recode --geno 0.5 --maf 0.01 --hwe 1E-6 --out kare_snpqc
+plink --file kare_snpqc --recode --extract selsnplist --out kare-snpqc
+plink --file kare-snpqc --recode --extract selsnplist --out kare_snpqc
+plink --file nkare_snpqc --linear --dominant --pheno-file  --covar covariate_file --out kare_dom
+
+plink --file kare --recode --mind 0.05 --out kare_sampleqc
+plink --file merre_sample1 --recode --mind 0.05 --out test_sample1 --allow-no-sex --pheno ../merge_60.pheno 
+(this is not running causing error, All people removed due to missing genotype data)
+ 
+plink --file kare_sampleqc --recode --geno 0.05 --maf 0.001 --hwe 1E-6 --out kare_snpqc
+plink --file kare_snpqc --recode --extract selsnplist --out nkare_snpqc
+plink --file nkare_snpqc --linear --dominant --pheno pheno_file --covar covariate_file --out kare_dom
+
+###########################################################################
+Step1. Convert VCF FIle to MAP/BED file
+plink --vcf ../merge_60_with_id.(input_file) --maf 0.05 --recode --pheno ../merge_60.pheno --out merge_sample1  --allow-no-sex
+(recode is done because the ped file save with phenotype info, so later u no need to pass information)
+
+Step2 : Make bed file
+plink --file merge_sample1 (output_file_from_step1) --make-bed  --freq --allow-no-sex --out merge_sample1
+(merge_sample1.bed file will created)
+(Now can be run  by inputting --bfile  instead of --file which will run computer fast )
+
+
+Step 3: Do Association Logistic Regression
+(default Option)
+plink --bfile merge_sample1 --allow-no-sex --assoc --out assoc_only --ci 0.95 
+(Output file assoc_only.assoc is saved )
+
+(Logistic Regression)
+
+plink --bfile merge_sample1 --allow-no-sex 
+
+(Ci Option as jyeon Phd )
+
+
+### Alternate /Full model association tests
+(it is possible to perform tests of association between a disease and a variant other than the basic allelic test
+(Which compares frequencies of alleles in cases versus controls)
+by using the --model option
+plink --Code 
+plink --bfile merge_sample1
+
+
+plink --bfile merge_sample1 --model --out model_test --allow-no-sex
+(check model_test.model
+
+
+## --fisher flag to obtain exact p-values
+plink --bfile merge_case1 --model --fisher --out  fisher-model --ci 0.95
+
+## Simple logistic Regression
+plink --bfile merge_sample1 --logistic --ci 0.95 --out simple_logistic --allow-no-sex
+
+## logistic --dominant Method
+plink --bfile merge_sample1 --logistic --dominant --ci 0.95 --out simple_logistic --allow-no-sex
+
+## logistic --recessive Method 
+plink --bfile merge_sample1 --logistic --recessive --ci 0.95 --out simple_logistic --allow-no-sex
+
+## Genotypic
+plink --bfile merge_sample1 --logistic --genotypic --ci 0.95 --out logistic_genotypic --allow-no-sex
+
+06- 08
+1. plink --file merge_sample1 --assoc --logistic --out assoc_logis_ci   --ci 0.95 # assoc logistic Only
+2. plink --file merge_sample1 --assoc --ci 0.95 --out assoc_only --allow-no-sex #Assoc Only
+3. plink --file merge_sample1 --model ci 0.95 --out model_only --allow-no-sex   # Model Only
+
+
+4.plink --file merge_sample1 --model --fisher -- ci 0.95 --out_model_fisher --allow-no-sex
+
+5.plink --file merge_sample1 --logistic --fisher -ci 0.95 --out logistic_fisher --allow-no-sex #out logistic_fisher.assoc.logistic
+
+6. plink --file merge_sample --fisher -ci 0.95 --out  Fisher_only #
+  
+7. plink --file merge_sample1 --model --fisher --logistic --recessive  --ci 0.95 --out model_fisher_geno_rec
+( All value NA deleted FIle )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

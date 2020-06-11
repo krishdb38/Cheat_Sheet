@@ -1,0 +1,61 @@
+## Top VCF Version
+## VCF Conversion Software data
+## Comd line detail
+## Reference File
+.
+.
+.
+.
+## SNVTHeta value
+## Indel Thera 0.001
+## SNVSB SNV site strand bias
+## SNVHPOL SNV contextual homopolymer length
+## CIGAR CIGAR alignment for each alternate indel allele
+## RU Smallest repeating sequence unit extended or contracted in the indel allele realtive to the reference.
+	RUs longer than 20 bases are not reported
+## REFREP Number of times  RU is repeated in reference.
+## IDREP Number of Times RU is repeated in indel allele
+
+
+
+
+
+
+
+
+
+
+
+
+
+insertion and deletion variants (indels)
+Single_Nucleotide Polymorphisms (SNPs)
+SNPs in coding and noncoding regions have been implicated in both Mendelian and complex disease, and teh same is true for indels.
+
+#https://onlinelibrary.wiley.com/doi/full/10.1002/gepi.22175
+
+#######################
+GT --> Geno Type
+##
+
+
+
+##BG ZIp
+ ## bg zip is requirted to annotate with dbsnp
+bgzip -c file.vcf > file.vcf.gz
+tabix -p vcf file.vcf.gz
+
+## Tabix is always importanttabix -p vcf
+
+
+
+
+
+
+## To Annotate VCF file with rsid 
+# use bcftools annotate --help for more details
+bcftools annotate -a (annotations_file _ ) -c (Column_list_We want Id) -o (OutPut File Standard File Format)
+
+
+
+
