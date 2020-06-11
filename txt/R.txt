@@ -1,3 +1,24 @@
+v = c(2,5.5,6)
+t = c(8,3,4)
+v+t = Element wise addition [1] 10.0  8.5 10.0
+2+v #2 added to all elements
+
+a = LETTERS[1:4] # A B C D
+
+%in% --> This operator is used to identify if an element belongs to a
+vector.
+
+%*%  --> This operator is used to multiply a matrix with its transpose.
+t(Matrix) --> will transpose the Matrix
+M = matrix( c(2,6,5,1,10,4), nrow=2,ncol=3,byrow =TRUE)
+t = M %*% t(M)
+t = M %*% t(M)
+ [,1] [,2]
+[1,] 65 82
+[2,] 82 117
+
+
+
 setwd("path")
 
 dim(df)   #shape of Data Frame
@@ -29,9 +50,12 @@ length()
 class(data) #data type Numeric
 #type() in python
 class(df/matrix, vector..)
+ls() # show current variable availiable
 is.matrix(df...)
 is.data.frame(df..)
-is.
+is.?
+is.integer, list , logical, matrix, function()
+##to check weather or not use is.??
 
 as.numeric(data) #change to number
 colnames(df)
@@ -43,3 +67,240 @@ colnames() # col name
 df[rowname]#display row
 df[:,c(1:3)] #All Row 1;3 col
 iris[1:5,) #All Col 1-5 row
+
+
+## R -if Statements
+if(boolean_expression) {
+ // statement(s) will execute if the boolean expression is true.
+}
+x <- 30L
+if(is.integer(x)){
+ print("X is an Integer")
+}
+
+## if Else
+if(boolean_expression) {
+ // statement(s) will execute if the boolean expression is true.
+} else {
+ // statement(s) will execute if the boolean expression is false.
+}
+
+## if else if Statement
+if(boolean_expression 1) {
+ // Executes when the boolean expression 1 is true.
+}else if( boolean_expression 2) {
+ // Executes when the boolean expression 2 is true.
+}else if( boolean_expression 3) {
+ // Executes when the boolean expression 3 is true.
+}else {
+ // executes when none of the above condition is true.
+}
+
+
+### Loop in R
+1. repeat loop 2.while loop 3. for loop
+
+## 1. repeat loop
+repeat {
+	commands
+	if(condition) {
+		break
+	}
+}
+
+v <- c("Hello","loop")
+cnt <- 2
+repeat{
+ print(v)
+ cnt <- cnt+1
+ if(cnt > 5){
+ break
+ }
+## While loop
+while (test_expression) {
+ statement
+}
+
+## R-for Loop
+for (value in vector) {
+ statements
+}
+v <- LETTERS[1:4]
+for ( i in v) {
+ print(i)
+}
+
+
+## loop Control Statements
+1. break: when the break statement is encounterred inside a loop,
+	the loop is immidiately terminated and program control resumes at the next statement following the loop.
+
+2.next: is useful when we want to skip the current iteration of loop without terminating it.
+
+
+
+## R Function
+function_name = function(arg_1, arg_2){
+		function body
+} ## Same like Java Script
+## Built in Function
+print(seq(32,44) , print(mean(25:82) , print(sum(40:50))
+
+
+## user defined Function
+
+## Calling a Function with Default Argument
+# Create a function with arguments.
+new.function <- function(a = 3,b =6) {
+result <- a*b
+print(result)
+ }
+new.function() # Default values will passed
+
+
+## R String
+a <- 'Start and end with single quote'
+b <- "Start and end with double quotes"
+c <- "single quote ' in between double quotes"
+d <- 'Double quotes " in between single quote'
+
+## String Manipulation
+Many Strings in R are combined using paste() function. It can take any number of arguments to be combined together   
+a <- "Hello"
+b <- 'How'
+c <- "are you? "
+print(paste(a,b,c))
+
+
+# Formatting Numbers & Strings --format() function
+format(x, digits, nsmall, scientific, width , justify = c("left", "right",
+	"centre","none"))
+x is the vector input.
+digits is the total number of digits displayed.
+nsmall is the minimum number of digits to the right of the decimal point.
+scientific is set to TRUE to display scientific notation.
+width indicates the minimum width to be displayed by padding blanks in the
+beginning.
+justify is the display of the string to left, right or center.
+ 
+
+# Counting number of characters in a string -nchar() function
+nchar("char")
+## Changing the case-toupper() & tolower()
+## Extracting parts of a String
+substring(x, first, last)
+
+
+## R Vectors
+## Vectors are the most basic R data objects and there are six types of atomic vectors.
+They are logical, integer, double, complex , character and raw
+
+##  Accessing Vector Elements
+## Accessing Vector elements using position
+t = c("Sunday", "Mon", "tuesday", "Wed")
+u = t[c(1,2,3)]
+
+## Vector Manipulation
+Vector Arithmetic
+## Two vectors of same length can be added, substracted, multiplied or divided giving
+the result as a vector
+
+v1 <- c(3,8,4,5,0,11)
+v2 <- c(4,11,0,8,1,2)
+
+# Vector Addition
+v1+v2
+
+## Vector Sorting
+sort(vector)
+sort(vector, decreasing = True)
+
+
+## Lists
+lists are the R objects which contain elements of
+different types like -numbers, strings, vector, 
+
+## Create a list containing strings, numbers, vectors and a logical values
+mylist = list("red", "Green", c(21,32,11), TRUE, 55.5)
+
+
+##Merging Lists
+list1 = list(1,2,3)
+list2 = list("sun", "mon", "tues")
+
+
+## Converting List to Vector
+unlist(list)
+
+
+
+### R-Matrix
+elements are arranged in a two-dimensional rectangular layout. They contain elements 
+of the same atomic types.
+
+## Syntax
+matrix (data, nrow, ncol, byrow, dimnames)
+
+
+
+## R- Arrays
+# Create two vectors of different lengths.
+vector = c(5,9,3)
+vector2 = c(10,11,12,13,14,15)
+
+
+
+### Calculations Across Array Elements
+apply(x, margin, fun)
+x is an array
+margin is the name of the data set used
+fun is the function to be applied across the elements of the array
+
+# Create two vectors of different lengths.
+vector1 <- c(5,9,3)
+vector2 <- c(10,11,12,13,14,15)
+# Take these vectors as input to the array.
+new.array <- array(c(vector1,vector2),dim=c(3,3,2))
+
+# R-Factors are the data objects which are used to categorize the data and store it as levels.
+They can store both strings and integers. They are useful in the columns which have a limited number of unique values.
+
+
+
+## R-data Frames
+# Create the data frame
+emp_data = data.frame(emp_id = c(1:5),
+			emp_name = c("RIck", "Dan", "Michele", "Ryan", "Gray"),
+			salary = c(623, 500,300,299),
+			start_date = as.Date(c("2010","2013", "2014", "2015", "2015")
+
+
+
+## R-packages
+R packages are a collection of R functions, compiled code and sample data. They are stored under a directory called"library"
+
+.libPaths() # show the paths wherelibrary installed
+library() ## show the list of installed library
+
+
+## Install a New Packages
+install.packages("Packages Name")
+# install the package name ("XML"
+install.packages("XML")
+
+# install the packages manual
+install.packages(file_with_path, repos = NULL, type = "source")
+# install the package named "XML"
+install.packages("E:/xml_...zip", repos=NULL< type= "source")
+
+## load Package to Library
+Before a package can be used in the code, it must be loaded to the current R environment.
+You also need to load a package that is already installed previously but not available in the current environment.
+
+library("package_Name") #library("xml")
+
+
+
+## R-Data Reshaping 
+## Create Vector objects
+city = 

@@ -3,3 +3,16 @@ https://www.nbcnews.com/health/health-news/six-genes-linked-preterm-births-n7993
 
 # samtools to create index file for bam file
 samtools index filename.bam
+
+
+## Software to analyse VCF FILE
+vSNP 
+#https://github.com/USDA-VS/vSNP
+
+
+https://github.com/ukaraoz/MtbGenomicsWorkshop/tree/85106dc00f5ae99b12881210734e2e6b9d5a135c
+
+
+
+
+https://github.com/anands1997/575grp/tree/be369cc6b74af17ccba2dbaa96deaf054c1ce7dd
