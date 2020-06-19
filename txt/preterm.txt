@@ -1,3 +1,57 @@
+<<<<<<< HEAD
+df = pd.read_csv("../datas_not_to_upload/873.PASS.vcf", comment= "#",
+                 escapechar= "\\", sep="\t",engine="c",low_memory= True)
+
+columns = ["CHROM", "POS", "ID", "REF" , "ALT", "QUAL", "FILTER", "INFO", "FORMAT", "DEFAULT"]
+
+
+#df.drop("ID", axis=1, inplace=True) # Remove the Column ID from Axis
+df.drop("FILTER", axis = 1, inplace = True)
+
+
+## For loop to Convert VCF to CSV 
+
+#Since Computer Take Long Time so we divide data in 10 10 
+path = "/BiO/Preterm/raw_data/"
+files = os.listdir(path)
+files1 = files[:10]   #First 10 files
+files2 = files[10:20]  #Last 10 Files
+
+import tqdm
+path = "/BiO/Preterm/raw_data/"
+col = ['CHROM', 'POS', 'REF', 'ALT', 'FILTER', 'SNP']
+
+for file in tqdm.tqdm(files2): #Change Files1 and 2
+    file_list =  os.listdir(path+file+ "/")
+    
+    if (file+".csv") in file_list:
+        print("\nFile already Exist",file+".csv")
+        print("Remove this Manually if you want do Again...\n")
+        pass
+        #We did this becasuse system took around 30 Min for 1 File 
+    elif (file+".vcf") in file_list:
+        print(file +".vcf", end="\t")
+        df = pd.read_csv(path+file+"/"+file+".vcf", comment="#",sep="\t",header=None,low_memory = False)
+        df = df.iloc[:,[0,1,3,4,6,9]]
+        df.columns = col
+        df = df[df["FILTER"]=="PASS"]
+        df = df.drop(["FILTER"],axis=1)
+        df["SNP"]= df["SNP"].apply(lambda x: x[:3] if(x[1]=="/") else ".")
+        df.to_csv(path+file+"/"+file+".csv",index=False)
+        print(file+".csv Done")
+    else:
+        print("VCF File Not Found is directory")
+
+
+###### VCF tools python Package to compare VCF File
+pip install vcftools
+   # To fromat the data in narrow format
+vcftoolz narrow inpu_vcf_file.vcf > narrow_out_vcf.tsv
+vcftoolz compare file1.vcf file2.vcf file3.vcf > summary.txt
+
+
+https://vcftoolz.readthedocs.io/en/latest/usage.html
+=======
 ## Genese Behind Preterm Birth
 ## All Col
 ['#Chr', 'Start', 'End', 'Ref', 'Alt', 'Ref.Gene', 'Func.refGene',
@@ -231,3 +285,4 @@ plink --bfile mydata --logistic --condition-list snps.txt
 
 
 
+>>>>>>> f9752e43641343ca2600782965b583691474da77
