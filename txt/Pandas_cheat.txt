@@ -1,3 +1,39 @@
 concate.drop(columns = ["Unnamed: 0"]) #Drop Column by Column Name
 df.column_name.value_counts(normalize = True)
 df.sort_values(by = "Total day charge" , ascending = False).head()
+
+
+
+
+### Pandas Working with text data
+a = pd.Series(["a", "b", "c"])
+
+a.str.count("a")
+a.str.isdigit()
+a.str.match("a")
+a.str.
+
+
+
+## String Methods (Function)
+a.str.lower()
+a.str.upper()
+a.str.len()
+a.str.strip() # Remove white spaces
+a.str.lstrip() # left
+a.str.rstrip() # Rstrip
+a.str.replace("source", "destination")
+
+
+## Splitting and replacing strings
+s2 = pd.Series(["a_b_c", "c_d_e", np.nan, "f_g_h"], dtype = "string")
+# Elements in the split lists can be accessed using get or [] notations
+
+s2.str.split("_").str.get(1)
+# it is easy to expand this to return a DataFrame using expand.
+s2.str.split("_", expand = True)
+
+# rsplit is similar to split except it works in the reverse direction,
+i.e. from the end of the string to the begining of the strings
+
+s2.str.rsplit("_", expand = True, n=1)
