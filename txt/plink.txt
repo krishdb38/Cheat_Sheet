@@ -121,7 +121,8 @@ plink --bfile merge_sample1 --logistic --genotypic --ci 0.95 --out logistic_geno
 ( All value NA deleted FIle )
 
 
-
+### Good info about plink in Korean
+https://2wordspm.com/2020/03/27/plink%eb%a5%bc-%ec%9d%b4%ec%9a%a9%ed%95%9c-gwas-%eb%b6%84%ec%84%9d-%eb%b0%8f-manhattan-plot-%eb%a7%8c%eb%93%a4%ea%b8%b0/
 
 
 

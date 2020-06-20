@@ -9,8 +9,78 @@ You can use promer in PCR to target a locus to allow for amplification for furth
 https://www.thermofisher.com/blog/behindthebench/designing-pcr-and-sanger-sequencing-primers-seq-it-out-5-2/
 
 Here are a few things to Kepp in mind 
+1. Sequences are always written from 5' to 3'.
+ Dont  ever write a primer sequence reversed or you will only confuse yourself and others.
+2.Polymerase always extends the 3' end of the primer, and the sequence you will read will be the same strand (sense or anti-sense) as the primer itself.
+3. Thus if you choose a primer sequence that you can read in your source sequence(for examople, in the vector), the sequence you will obtain will extend from the primer's right(3') end.
+4.if you choose a pri
+
+. 논문들의 supplement data를 잘 살펴보자. 다른 논문에서 이미 디자인된 primer 정보가 있다면 적극 활용하자. (재현만 잘 되면 새로 짤 필요 없다.)
+
+a. NGS 검사에서 나온 변이들의 exon을 골라, 유전자와 exon number, 그리고 올바른 transcription mode에 해당하는 NM number를 정리한다.
+
+b. Ensemble Genome Browser를 이용해, NM number를 통해 해당 위치에 접근하여, exon 영역과 앞 뒤 200bp 정도를 포함하는 시퀀스를 display한다. (GRCh37, hg19 등 Genome Version이 맞는 사이트로 접근)
+
+c. Sanger 시퀀싱을 할 경우, 읽는 primer 뒤로 50~100 bp는 퀄리티가 나빠 제대로 안읽히기 때문에 primer는 최소한 타겟 영역의 100bp 이상 앞쪽에서 잡는다. Forward와 Reverse간의 간격은 500bp 전후로 적당히 잡는다. 어차피 8~900 bp 넘어가면 그 뒤는 퀄리티가 나빠져서 못 읽는다.
+
+d. GC contents 40~60%이고, primer 길이 20~25bp 정도 되는 시퀀스를 골라서 Forward와 Reverse 서열을 선택한다. 이때 선택한 서열을 primer 평가 프로그램을 통해, dimer 또는 hairpin 이 형성되지는 않는지 살피고, 서로의 Tm 값이 5도 이상 차이나지 않도록 한다. 
+Reverse primer의 경우, pick-up한 시퀀스의 Reverse Complement 서열로 주문해야한다.
+
+
+Primer 평가: http://www.premierbiosoft.com/NetPrimer/AnalyzePrimer.jsp
+
+Tm 값 계산: https://tmcalculator.neb.com/
+
+시퀀스 뒤집기: http://arep.med.harvard.edu/labgc/adnan/projects/Utilities/revcomp.html
+
+e. UCSC Genome Browser에서 제공하는 In-silico PCR을 통해, pick-up한 primer가
 
 
 
 1. https://www.ncbi.nlm.nih.gov/tools/primer-blast/  # Site to Cut 
 
+2. https://sg.idtdna.com/calc/analyzer ( Primer Analysis )
+
+
+
+
+
+
+### Tips From BioMedical Research Core Faculties
+1. Design Primers only from accurate sequence data.
+2. Restrict your search to regions that best reflect your goals
+3. Locate candidate Primers
+4. Discard candidate primers that show undesirable self-hybridization
+5. Verify the site specificity of the primer.
+6. Choosing among candidate primers
+(https://brcf.medicine.umich.edu/cores/advanced-genomics/faqs/sanger-sequencing-faqs/how-do-i-design-my-own-primers/ )
+
+
+
+https://dnacore.mgh.harvard.edu/new-cgi-bin/site/pages/sequencing_pages/primer_design.jsp
+1. Primer length should be in the range of 18 and 24 bases.
+2. The primer should have a GC content of about 45-55%
+3. The primers should have a GC -lock (or GC "clamp") on the 3 and (i.e. the last 1 or 2 nucleotides should be a G or C residue)
+4. The primer should have a melting temperature (Tm) greater than 50 C but less than 65 c 
+5. The primer should not include homopoylymeric runs of more than 4-5 nucleotides.
+6. Avoid primers with secondry structures or the potential to self-hybridize.
+7. Avoid disigning primer upstream of homppolymeric regions (A, C, G or T repeats)
+8.Primer should be located at least 50-60 bases upstream of your sequence of interest.
+
+--
+(Note: No set of guidelines will always accurately predict the success of a primer. Some primers may fail for no apparent reason,
+and primers that appear to be poor candidates may work fo automated sequencing)
+
+
+
+##### Tools used to do Primer3
+Primer3 software
+# Download and install Software, easy to install sudo apt-get install is availiable
+
+## For easy process i am doing primer3_core as alias primer3
+code--> alias primer3="primer3_core"
+
+Mostlye Used Option 
+--output=file_path
+--error=file_path
+--format_output # this flag generate user-oriented(rather than program-oriented) output.
