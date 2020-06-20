@@ -304,3 +304,18 @@ library("package_Name") #library("xml")
 ## R-Data Reshaping 
 ## Create Vector objects
 city = 
+
+
+
+
+
+
+
+
+
+
+
+
+### From wiki doc
+# Create a new column name satisfaction, value is HIgh if satisfaction level is greater than 0.5 else Low
+HR$satisfaction = ifelse(HR$satisfaction >0.5, "HIgh" ,"low")
