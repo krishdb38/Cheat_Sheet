@@ -319,3 +319,15 @@ city =
 ### From wiki doc
 # Create a new column name satisfaction, value is HIgh if satisfaction level is greater than 0.5 else Low
 HR$satisfaction = ifelse(HR$satisfaction >0.5, "HIgh" ,"low")
+
+
+
+### Replace string in R
+gsub()
+imdb$Genre2 = gsub("," , " ", imdb$Genre) ## Replace , with " " space  from Genre COlumn and assign to Genre2
+
+
+install.packages("tm")
+library(tm)
+
+

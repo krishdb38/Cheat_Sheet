@@ -57,3 +57,10 @@ awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' no_chr.vcf > with_chr.vcf
 
 
 
+### tartar cvf posein.tar *.c  # make zip posein.tar ending all file with .c
+tar cf posein.tar pesein/ # zip all files ad sub folders from posein
+tar xvf posein.tar # unzip posein.tar
+tar rvf posein.tar jalin.txt krihs.txt # add files jalin.txt and krish.txt to posein.tar
+tar tvf posein.tar # show files inside posein.tar
+tar zcvf posein.tar.gz *.c # gzip all files ending with .c
+  
