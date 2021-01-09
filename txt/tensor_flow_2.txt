@@ -4,6 +4,8 @@ tensor.numpy() # Print as nd array
 v = tf.Variable( array)
 constant_variable = tf.constant(array)
 
+tf.zeros([shape], dtypes)
+# tf.zeros([3,4], tf.int32)
 
 
 
