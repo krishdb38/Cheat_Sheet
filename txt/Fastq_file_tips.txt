@@ -1,0 +1,25 @@
+https://www.biostars.org/p/66996/
+
+# filter Fastaq file with read length condition
+cat your.fastq | paste - - - - | awk 'length($2)  >= 21 && length($2) <= 25' | sed 's/\t/\n/g' > filtered.fastq
+
+# Fastest Method
+awk 'BEGIN {FS = "\t" ; OFS = "\n"} {header = $0 ; getline seq ; getline qheader ; getline qseq ;
+if (length(seq) >= 21 && length(seq) <= 25) {print header, seq, qheader, qseq}}' < your.fastq > filtered.fastq
+
+# It assumes that a fastq record takes exactly 4 lines
+# Edit deal with spaces in sequence names as suggested by brianpenghe
+
+# zcat your.fastq.gz | ....
+
+# Using Biopieces www.biopieces.org
+read_fastq -i in.fq | grab -e 'SEQ_LEN>=21' | grab -e 'SEQ_LEN <=25' | write_fastq -o out.fq -x
+
+## You can easily do this with prinseq-lite
+# filter options 
+-min_len < integer >
+        Filter sequence shorter than min_len
+
+-max_len < integer > 
+         Filter sequence longer than max_len
+-> prinseq-lite.pl -fastq yourfile.fastq -out_format 4 -out_good seqs_good -min_len 21 -trim_to_len 25
