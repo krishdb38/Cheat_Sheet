@@ -37,3 +37,5 @@ s2.str.split("_", expand = True)
 i.e. from the end of the string to the begining of the strings
 
 s2.str.rsplit("_", expand = True, n=1)
+
+## Pandas assign multiple Values to multiple column

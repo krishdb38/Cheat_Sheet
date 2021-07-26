@@ -1,0 +1,14 @@
+1. npm project start 
+npm init -y   # check json file created or not
+
+2. npm  i -D parcel-bundler  # install app in developer mode 
+# folder created and installed
+
+3. Edit json file
+<script>
+	"dev" : "parcel index.html"
+	"build" : "parcel build index.html"
+create a new file index.html
+
+4. create new file main.scss file
+5. edit other codes      

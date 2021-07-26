@@ -1,0 +1,2 @@
+To install Pluggin 
+Under Admin , Install Plugin
