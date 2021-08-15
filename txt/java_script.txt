@@ -1,0 +1,11 @@
+# in colab to make clicking in every 60 second so your connection will not closed
+#Open your Chrome DevTools by pressing F12 or ctrl+shift+i on Linux and enter the 
+#   following JavaScript snippet in your console:
+
+
+
+function KeepClicking(){
+console.log("Clicking");
+document.querySelector("colab-connect-button").click()
+}
+setInterval(KeepClicking,60000)

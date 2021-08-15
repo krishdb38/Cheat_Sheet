@@ -31,3 +31,6 @@ blastn -db  nt  -query nt.fsa -out results.out
 
 # To download blastp 2.6 in ubuntu 2016
 https://ngsprimer.wordpress.com/
+
+#### Blast N 
+blastn -query all_primer_aim_krish.fasta  -subject all_primer_aim_krish.fasta -outfmt '6 qseqid sseqid pident mismatch qstart qend sstart send evalue bitscore ' -task blastn-short   -out krish.txt     

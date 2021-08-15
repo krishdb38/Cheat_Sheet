@@ -41,8 +41,6 @@ alias l="la -lh"
 ## vim Setting
 >>>>>>> 15c93ac7a995f0a1fc6622f477e35336469bc843
 
-
-
 $# is a special variable in bash, that expands to the number of arguments (positional parameters ) i.e $1 , $2... passed to the script
 
 <<<<<<< HEAD
@@ -63,4 +61,41 @@ tar xvf posein.tar # unzip posein.tar
 tar rvf posein.tar jalin.txt krihs.txt # add files jalin.txt and krish.txt to posein.tar
 tar tvf posein.tar # show files inside posein.tar
 tar zcvf posein.tar.gz *.c # gzip all files ending with .c
-  
+
+
+# For loop in linux
+for Fastq_id in $(cat female_22); do genomom_v3.py $Fastq_id 37_18 singleton 70 ; done
+
+
+## Remove firs 20 line of file and save as same name - replace 
+## useful while using for loop 
+sed -i '1,20d' file_name
+remove last index in linux like GC12345.Fastq  to GC12345
+var id1=GC12345.txt
+echo %{id1%.txt}  >> GC12345
+
+for file in ` tail -25  pdf_not_done ` ; do ` nohup python3 XXXXX.py  ${file} 38_16 singleton 60 ` & done;
+
+for file in ` tail -25 positive_list8 ` ; do ` nohup genomom_v3.py ${file%.Fastq} 38_17 singleton 60 ` ;  done &
+
+
+#####################  to hide warning or continue pdf displaying process in server ###
+export DISPLAY=:0  # display will not shown and pdf will done in background
+
+
+
+
+
+
+
+
+
+
+
+systemctl restart NetworkManager
+firewall-cmd --list-all # all firewall 
+
+
+
+
+
