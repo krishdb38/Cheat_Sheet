@@ -1,0 +1,4 @@
+1. ip addr
+cento 8
+systemctl restart NetworkManager.service
+systemctl status NetworkManager.service

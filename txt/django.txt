@@ -8,11 +8,23 @@ python -m django startproject project_name
 ## Inside 1 app there may be many app
 
 change working directory where manage.py exist
-python manage.py startapp app_name
+python manage.py startapp app_name # main
 
 # need to create application
 # inside folder app_name where manage.py exists
 python manage.py startapp app_name # like students
+
+# Every thing that view is 
+function
+can create multiple function/ View
+# Create your views here.
+def index(response):
+    return  HttpResponse('<h1> This is main </h1>')
+
+# Create new file urls.py inside main
+url.py connect the path
+from django.shortcuts import render 
+from . import view # from view py
 
 # for data base need to student 
 
@@ -39,3 +51,9 @@ DATABASES = {
 
 ##python manage.py makemigrations
 ## python manage.py migrate
+
+## My common mistakes in django which causing errors are
+-- Folder names not matching django pattern like template instead templates
+-- {%  %} typing error 
+-- importing views and other path error
+
