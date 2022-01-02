@@ -17,11 +17,6 @@ airodump-ng -c 4 --bssid - w file_location_to_save
 #aireplay-ng -0 10 -a mac_add_mon0_wlan -c mac_address  wlan0mon
 
 
-
-
-
-
-
 # nmap port scanner
 nmap -A ip_address
 nmap -A 192.168.0.1/24 # all Network
@@ -48,3 +43,41 @@ select * from accounts where usename = 'admin' and password='aaa' or 1 = 1 # Con
 User injecting
 select * from accounts where username = 'admin' # ' and password = $PASSWORD
 comment all after userid --> admin'#
+
+#################################################################
+TOR
+service tor status
+service tor daemon
+proxychains firefox www.duckduckgo.com
+  
+
+nano /etc/NetworkManager/NetworkManager.conf
+service network-manager restart
+
+####### macchanger to change mac id
+machchanger --help
+macchanger -ls # list all mac address
+## help
+
+  -h,  --help                   Print this help
+  -V,  --version                Print version and exit
+  -s,  --show                   Print the MAC address and exit
+  -e,  --ending                 Don't change the vendor bytes
+  -a,  --another                Set random vendor MAC of the same kind
+  -A                            Set random vendor MAC of any kind
+  -p,  --permanent              Reset to original, permanent hardware MAC
+  -r,  --random                 Set fully random MAC
+  -l,  --list[=keyword]         Print known vendors
+  -b,  --bia                    Pretend to be a burned-in-address
+  -m,  --mac=XX:XX:XX:XX:XX:XX
+       --mac XX:XX:XX:XX:XX:XX  Set the MAC XX:XX:XX:XX:XX:XX
+
+mac
+
+# automatically change mac address  
+# daily job after reboot
+crontab -e
+
+
+
+

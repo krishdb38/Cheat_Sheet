@@ -92,9 +92,20 @@ export DISPLAY=:0  # display will not shown and pdf will done in background
 
 
 
+
 systemctl restart NetworkManager
 firewall-cmd --list-all # all firewall 
 
+
+iwconfig  # wifi router 
+ifconfig wlan0 down # down wifi router
+airmon-ng ckeck kill # kill the wifi related process
+iwconfig wlan0 mode monitor
+# data packet monitoring
+# airodump-ng wlan0 ( wifi router ) # 
+airdodump-ng --band a wlan0 
+airodump-ng --bssid 20:C0:6D:99:DC:64 --channel 149 --write test wlan0
+# test is file name bssid is mac address of target computer
 
 
 

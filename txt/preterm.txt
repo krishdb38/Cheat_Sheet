@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-df = pd.read_csv("../datas_not_to_upload/873.PASS.vcf", comment= "#",
+df = pd.read_csv("../datas_not_to_upload/Sample_ID.PASS.vcf", comment= "#",
                  escapechar= "\\", sep="\t",engine="c",low_memory= True)
 
 columns = ["CHROM", "POS", "ID", "REF" , "ALT", "QUAL", "FILTER", "INFO", "FORMAT", "DEFAULT"]
@@ -105,17 +105,10 @@ Unique Values inside Func.refGene
 
 
 
-case = ['1119','910','873','1489','989','880','1282','1584','875','1009','MWB_110',
-        'MWB_161','MWB_174','MWB_242','MWB_276','MWB_437','MWB_490','MWB_506',
-        'MWB_540','MWB_548','MWB_564','MWB_626','MWB_719','MWB_740','MWB_746',
-        'MWB_815','MWB_870','MWB_1226','MWB_1276',
-        'MWB_1445']
+case = [Sample_Names]
 
 
-control = ['1093','1134','1293','1316','1389','1428','1477','1481','1557','1591','MWB_895','MWB_911',
-           'MWB_941','MWB_956','MWB_961',"MWB_1008",'MWB_1040','MWB_1151','MWB_1244',
-           'MWB_1250','MWB_1443','MWB_1676','MWB_1960','MWB_1964','MWB_1975',
-           'MWB_1977','MWB_1982','MWB_1995','MWB_2007','MWB_2008']
+control = [samples_Names]
 
 
 
@@ -125,17 +118,11 @@ control = ['1093','1134','1293','1316','1389','1428','1477','1481','1557','1591'
 #
 
 
-
-
-
 ### Csv Files only Pathogenic
 
 873 Number From Indel 
 CASP8  Omim 601763  Related to Breast Cancer Related
 https://www.omim.org/entry/601763
-
-
-
 
 
 
@@ -254,9 +241,6 @@ https://groups.google.com/forum/#!topic/plink2-users/cBQAVMB6wSY
 
 
 
-
-
-
 ### plink steps for Final Process
 1. Convert vcf file to plink bed map file
 plink --vcf merge_60.vcf --maf 0.05 --recode --ouot merge60 (#this will create 3 file in same directory)
@@ -286,3 +270,6 @@ plink --bfile mydata --logistic --condition-list snps.txt
 
 
 >>>>>>> f9752e43641343ca2600782965b583691474da77
+
+Part 3
+

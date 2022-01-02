@@ -126,18 +126,32 @@ https://2wordspm.com/2020/03/27/plink%eb%a5%bc-%ec%9d%b4%ec%9a%a9%ed%95%9c-gwas-
 
 
 
+# Example usage using sed:
+sed -n '/#/!p' input.vcf | cut -f 1,2,9,10 | less
+# Sed removes the header info and then pipes to cut, which selects 
+#	specific fields/columns to load
+if you want specific columns only
 
 
+awk -F '\t' '{if($0 ~ /\#/) print; else if($7 == "PASS") print} 1009.vcf
 
 
+zcat vcf_Sample.vcf.gz | grep -P "\tPASS\t|^#"  | less
 
+for file in ` ls *.gz` ; do ` echo $file ` ;done;
+for file in ` ls *.gz` ; do ` zcat $file | grep -P "\tPASS\t|^#" | less  ` ;done;
 
+ for file in ` ls *.gz` ; do ` zcat $file | grep -P "\tPASS\t|^#" > {file}.PASS  ` ;done;
 
+for file in ` ls *.gz` ; do ` zcat $file | grep -P "\tPASS\t|^#" > ${file%vcf.gz}.PASS.vcf  ` ;done;
 
+for file in ` ls *.gz` ; do ` nohup zcat $file | grep -P "\tPASS\t|^#" > ${file%vcf.gz}PASS.vcf  ` & done;
+for file in ` ls *.gz` ; do ` nohup zcat $file | grep -P "\tPASS\t|^#" > ${file%vcf.gz}PASS.vcf  ` & done;
+for file in ` ls *.gz` ; do ` nohup zcat $file | grep -P "\tPASS\t|^#" > ${file%vcf.gz}PASS.vcf  ` & done;
+ ~/bcftools/bcftools merge -0 -o krish.vcf *.gz  --force-samples
+for file in `ls *vcf `; do ` bgzip -c $file > $file.gz ` & done ;
 
-
-
-
+~/bcftools/bcftools merge -0 -o krish.vcf *.gz  --force-samples
 
 
 
