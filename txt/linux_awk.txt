@@ -1,0 +1,15 @@
+# merged all csv file as a single , which is very fast as compared to pandas
+# all columns are same
+awk ' (NR == 1) || ( FNR > 1)' *.csv > ../merged_rgc.csv &
+
+
+# Rsync
+rsync -av --exclude={,'*.py.*'} --max-size=10m folder_Name_to_copy -e 'ssh -p 3030' albatross@180.(destiny):/BiO/NIPT_lab_test/genomom_analysis
+
+rsync -av --exclude *.csv --maxsize=10m * -e 'ssh -p 3030' albatross@180.210.18.30:/BiO/Genomom_ML/rc_rl_snp_datas/
+
+
+rsync -av --exclude '*.csv' * -e 'ssh -p 3030' albatross@180.210.18.30:/BiO/Genomom_ML/rc_rl_snp_datas/
+
+
+rsync -av --exclude '*.csv' * -e 'ssh -p 3030 -c aes128-cbc' albatross@180.210.18.30:/BiO/Genomom_ML/rc_rl_snp_datas/
