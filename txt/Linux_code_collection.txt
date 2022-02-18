@@ -107,6 +107,6 @@ airdodump-ng --band a wlan0
 airodump-ng --bssid 20:C0:6D:99:DC:64 --channel 149 --write test wlan0
 # test is file name bssid is mac address of target computer
 
-
-
+############### For Loop to run  NIPT 
+for file in ` head 30  aim_snp_list.txt ` ; do ` nohup genomom_v3.py ${file%.Fastq}  15_37 singleton 50  `  &  done &
 
