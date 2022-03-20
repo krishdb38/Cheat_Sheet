@@ -57,3 +57,78 @@ DATABASES = {
 -- {%  %} typing error 
 -- importing views and other path error
 
+
+[auth]
+    changepassword
+    createsuperuser
+[axes]
+    axes_list_attempts
+    axes_reset
+    axes_reset_ip
+    axes_reset_logs
+    axes_reset_user
+    axes_reset_username
+[contenttypes]
+  remove_stale_contenttypes
+[debug_toolbar]
+    debugsqlshell
+[django]
+    check
+    compilemessages
+    createcachetable
+    dbshell
+    diffsettings
+    dumpdata
+    flush
+    inspectdb
+    loaddata
+    makemessages
+    makemigrations
+    migrate
+    sendtestemail
+    shell
+    showmigrations
+    sqlflush
+    sqlmigrate
+    sqlsequencereset
+    squashmigrations
+    startapp
+    startproject
+    test
+    testserver
+[sessions]
+    clearsessions
+[staticfiles]
+    collectstatic
+    findstatic
+    runserver 
+ 
+
+
+sudo apt-get update
+sudo pat-get install ….
+# 
+sudo ufw allow 8000
+sudo ufw deny 8000
+sudo ufw delete allow 8000
+sudo ufw allow ‘Nginx Full’
+sudo ufw allow ‘OpenSSH”
+sudo ufw delete allow from IP
+sudo ufw status numbered
+sudo ufw delete 1 # number
+sudo deny from IP_ADD
+sudo ufw status
+
+
+python manage.py runserver 0.0.0.0:8000
+# Testing gunicorn
+Gunicorn –bind 0.0.0.0:8000 project.wsgi
+# Creating a Gunicorn system service file
+Sudo nano /etc/system/system/gunicorn.service
+
+
+sudo systemctl restart gunicorn
+sudo systemctl daemon-reload
+sudo nginx -t && sudo systemctl restart nginx
+# nginx log files
+/var/log/nginx/

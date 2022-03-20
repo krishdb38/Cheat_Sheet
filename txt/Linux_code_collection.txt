@@ -8,8 +8,8 @@ head -1 <file name> #one line
 find . -name  filename\*
 
 To show line number in Vim
-ESC +: and type set number
-to remove ESC + : set nonumber
+ESC +: and typeset number
+to remove ESC + : set number
 
 grep -w "...."   file_name #To Match exact word # Other Parameter -r -i 
 
@@ -17,8 +17,8 @@ grep -w "...."   file_name #To Match exact word # Other Parameter -r -i
 find folder_name -type f | wc -l  
 
 
-#to show the top of process
-htop show the current process in better window
+#to show the top of the process
+htop show the current process in a better window
 #jobs # ps # top # bg # fg
 
 
@@ -84,15 +84,6 @@ export DISPLAY=:0  # display will not shown and pdf will done in background
 
 
 
-
-
-
-
-
-
-
-
-
 systemctl restart NetworkManager
 firewall-cmd --list-all # all firewall 
 
@@ -110,3 +101,9 @@ airodump-ng --bssid 20:C0:6D:99:DC:64 --channel 149 --write test wlan0
 ############### For Loop to run  NIPT 
 for file in ` head 30  aim_snp_list.txt ` ; do ` nohup genomom_v3.py ${file%.Fastq}  15_37 singleton 50  `  &  done &
 
+
+
+## Some times if there are many files then ls cant display number of files exist
+# like ls * | wc will not show the result
+# in this case can use like this
+find -type f -name '*.rc' | wc -l
