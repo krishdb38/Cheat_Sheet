@@ -1,0 +1,47 @@
+nginx config file # file name  --> config
+
+
+server {
+    listen 80;
+    server_name lims.genomecare.net;
+
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /BiO/LIMS;
+    }
+
+    location /media/ {
+        root /BiO/LIMS;
+    }
+
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+
+}
+
+### Gunicorn socket file name --> 
+
+[Unit]
+Description=gunicorn socket
+Requires=gunicorn.socket
+After=network.target
+
+[Socket]
+ListenStream=/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
+
+[Service]
+User=sammy
+Group=www-data
+WorkingDirectory=/BiO/LIMS
+ExecStart=/home/albatross2/anaconda3/envs/lims/bin/gunicorn \
+          --access-logfile - \
+          --workers 50 \
+          --bind unix:/run/gunicorn.sock \
+          config.wsgi:application

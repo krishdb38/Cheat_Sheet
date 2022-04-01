@@ -1,0 +1,181 @@
+
+# https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04
+
+django project deployment
+LIMS is our root project directory ( django project directory )
+
+1. Testing Gunicorn's Ability to Serve the project
+gunicorn --bind 0.0.0.0:8000  myproject.wsgi # in our case config.wsgi # location where wsgi file exist
+
+2. Creating Systemd Socket and Service Files for gunicorn
+sudo nano /etc/systemd/system/gunicorn.socket
+## Check default and edit like below 
+
+[Unit]
+Description=gunicorn socket
+Requires=gunicorn.socket
+After=network.target
+
+[Socket]
+ListenStream=/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
+
+[Service]
+User=sammy
+Group=www-data
+WorkingDirectory=/BiO/LIMS
+ExecStart=/home/albatross2/anaconda3/envs/lims/bin/gunicorn \
+          --access-logfile - \
+          --workers 50 \
+          --bind unix:/run/gunicorn.sock \
+          config.wsgi:application
+
+
+
+
+
+3. Create an open systemd service file fo rGunicorn with sudo
+sudo nano /etc/systemd/system/gunicorn.service
+
+######## /etc/systemd/system/gunicorn.service
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+Add service & other infor like
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=albatross2
+Group=www-data
+WorkingDirectory=/BiO/LIMS
+ExecStart=/home/albatross2/anaconda3/envs/lims/bin/gunicorn \
+          --access-logfile - \
+          --workers 80 \
+          --bind unix:/run/gunicorn.sock \
+          config.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+
+## Restart Services
+sudo systemctl start gunicorn.socket
+sudo systemctl enable gunicorn.socket
+
+4. Checking for the Gunicorn Socket File
+sudo systemctl status gunicorn.socket
+
+5. Check for the existence of the gunicorn.sock file the /run direcory
+file /run/gunicorn.sock
+
+sudo journalctl -u gunicorn.socket
+
+6. Testing Socket Activation
+sudo systemctl status  gunicorn
+
+# check the output 
+
+sudo systemctl status gunicorn
+sudo journalctl -u gunicorn
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+
+
+## 7  Configuring Nginx to Proxy Pass to Gunicorn
+sudo nano /etc/nginx/sites-available/project_name # in our case config
+###################################################
+nginx config file # file name  --> config
+
+server {
+    listen 80;
+    server_name lims.genomecare.net;
+
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /BiO/LIMS;
+    }
+
+    location /media/ {
+        root /BiO/LIMS;
+    }
+
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+
+}
+
+#########################################################
+8. create symbolic link 
+sudo ln -s /etc/nginx/sites-available/config /etc/nginx/sites-enabled
+
+## Check Nginx Configuration for syntax errors
+sudo nginx -t
+sudo systemctl restart nginx 
+## delete port 8000 because nginx and gunicorn connected by service 
+sudo ufw delete allow 8000
+sudo ufw allow 'Nginx Full'
+
+
+
+
+
+### Gunicorn socket file name --> 
+
+[Unit]
+Description=gunicorn socket
+Requires=gunicorn.socket
+After=network.target
+
+[Socket]
+ListenStream=/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
+
+[Service]
+User=sammy
+Group=www-data
+WorkingDirectory=/BiO/LIMS
+ExecStart=/home/albatross2/anaconda3/envs/lims/bin/gunicorn \
+          --access-logfile - \
+          --workers 50 \
+          --bind unix:/run/gunicorn.sock \
+          config.wsgi:application
+############################################################
+
+###################################################
+nginx config file # file name  --> config
+
+server {
+    listen 80;
+    server_name lims.genomecare.net;
+
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /BiO/LIMS;
+    }
+
+    location /media/ {
+        root /BiO/LIMS;
+    }
+
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+
+}
+
+#########################################################
