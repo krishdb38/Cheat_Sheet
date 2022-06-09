@@ -64,7 +64,7 @@ tar zcvf posein.tar.gz *.c # gzip all files ending with .c
 
 
 # For loop in linux
-for Fastq_id in $(cat female_22); do genomom_v3.py $Fastq_id 37_18 singleton 70 ; done
+for Fastq_id in $(cat female_22); do geno_v3.py $Fastq_id 37_18 singleton 70 ; done
 
 
 ## Remove firs 20 line of file and save as same name - replace 
@@ -99,7 +99,7 @@ airodump-ng --bssid 20:C0:6D:99:DC:64 --channel 149 --write test wlan0
 # test is file name bssid is mac address of target computer
 
 ############### For Loop to run  NIPT 
-for file in ` head 30  aim_snp_list.txt ` ; do ` nohup genomom_v3.py ${file%.Fastq}  15_37 singleton 50  `  &  done &
+for file in ` head 30  aim_snp_list.txt ` ; do ` nohup gen_v3.py ${file%.Fastq}  15_37 singleton 50  `  &  done &
 
 
 
@@ -107,3 +107,6 @@ for file in ` head 30  aim_snp_list.txt ` ; do ` nohup genomom_v3.py ${file%.Fas
 # like ls * | wc will not show the result
 # in this case can use like this
 find -type f -name '*.rc' | wc -l
+
+
+############# Extract Fasta File from inside folder

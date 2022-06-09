@@ -1,0 +1,192 @@
+리눅스 버전확인 cat /etc/os-release
+
+프로세스 확인 ps -ax
+
+프로세스 자세하게 top -b -n 1 
+
+프로세스 강제종료 kill -9 프로세스번호
+
+특정프로세스 확인 ps pid
+
+인터넷 다운 wget 주소
+
+속성유지 전체복사 cp -a
+
+하위디렉토리까지 cp -r
+
+ sudo -s // root 권한 얻기
+
+읽기(4), 쓰기(2), 실행(1), 소유자,그룹사용자,기타사용자 권한 부여      chmod -R 777 filename
+
+gz파일 압축풀기 gzip   -d   filename.gz
+
+gz파일 압축하기 gzip bbb.jpg 
+
+tar.gz 파일 미리보기 tar tvfz 파일명.tar.gz
+
+tar 압축풀기 tar -xvf 파일명.tar
+
+파일삭제 rm 파일이름
+
+디렉토리삭제 rm -r 디렉토리이름
+
+파일내 찾기 기능 cat ./log_file.txt | grep "문구1"
+
+파일 라인수 cat   파일명  |  wc  -l 
+
+이더넷 장치명 확인 nmcli d
+
+ip 중복 확인 arping -q -D -I "이더넷장치명" -c 1 "문제발생된서버ip"; echo $?
+
+백그라운드 포그라운드 전환 : 처음 프로그램 실행할때 맨 끝에 &을 붙인다. 실행중에는 ctrl + z 로 프로세스를 중지하고 bg(백그라운드), fg(포그라운드)입력
+
+scp 명령어를 이용한 파일 복사 및 전송 : scp -P 포트번호 계정명@ip주소:/위치/파일 /전송할경로/            (리눅스>윈도우)
+(예시) scp -P 3030 -r /volume1/path/보낼폴더 root@ip:/path (리눅스>리눅스)
+(예시) scp -c aes128-cbc -P 3030 user@ip:path ./ (받는 위치에서 다른서버 파일 다운)
+파일 리스트를 통한 scp 복사 (파일 리스트는 리눅스에서 작성해야됨) (보내는쪽에서 실행)
+1. cat ./Low_ff_list_2021.txt | xargs -i scp -P 3030 {}user@IP:/path
+(비밀번호 없이 계속실행)cat Low_ff_list_2021_2.txt | xargs -i  sshpass -p "" scp -P 3030 {} suer@ip:/path_folder
+2. cat ./snp_cnv_list.txt | xargs -i scp -c aes128-cbc -P 3030 ./{} user@ip:/path
+
+
+xshell 다운로드 sz + 파일명         업로드 rz
+
+ftp 사용하여 외부파일 받는 명령어 wget -r --ftp-user=user1 --ftp-password=password1 ftp://1.1.1.1//home/user1/download
+
+			wget --ftp-user=계정 --ftp-password=패스워드 URL주소
+
+ex) wget -r --ftp-user=user_ID --ftp-password=o****w ftp://path
+
+bgzip 압축, tavix 인덱싱
+
+		bgzip -c input파일.vcf>out파일.vcf.gz           tabix -p vcf out파일.vcf.gz
+
+bcftools을 이용한 vcf 병합 (예시 3가지, merge all 확인)
+
+		bcftools merge --merge all /BiO/Preterm/raw_data/MWB_110/MWB_110.vcf.gz /BiO/Preterm/raw_data/MWB_161/MWB_161.vcf.gz /BiO/Preterm/raw_data/MWB_174/^CB_174.vcf.gz --force-samples -o merge_test
+
+zip파일 내용보기
+	unzip -l file.zip
+
+plink 명령어
+
+plink --file kare --recode --mind 0.05 --out kare_sampleqc
+plink --file kare_sampleqc --recode --geno 0.05 --maf 0.001 --hwe 1E-6 --out kare_snpqc
+plink --file kare_snpqc --recode --extract selsnplist --out nkare_snpqc
+plink --file nkare_snpqc --linear --dominant --pheno pheno_file --covar covariate_file --out kare_dom
+
+library(qqman)
+data <- read.table("skare_dom.assoc.linear", head=T)
+ttan(data, chr="CHR", bp="BP", snp="SNP", p="P")
+
+파일 칼럼 자르기
+cut -f2 -d$'\t' 파일이름
+
+파일 비교 
+diff 옵션 파일1 파일2                         ////////옵션 -c 차이점출력 -d 차이점 상세출력 -r 디렉토리 -i 대소문자 차이 무시 -w 공백차이무시
+
+하위디렉토리까지 파일명 검색(찾기)
+find . -name "찾을 파일명"
+
+파일찾아서 복사
+find . -name "*sca*" -exec cp --backup --suffix=_ {} /BiO/ogi/cptest/B \;
+
+파일에서 내용 찾기
+grep 찾으려는내용 파일명 | cut -f 2 -d ' '
+
+SNP imputation 과정
+
+vcf 변환
+plink --file sample --recode vcf --chr 숫자(--no-pheno --no-fid --no-parents --no-sex) --out sample
+
+duplication 제거
+python removedup.py 파일이름_chr1 1
+
+sorting
+vcf-sort sample_chrN.vcf | bgzip -c > sample_chrN.vcf.gz
+
+vcf > (bed/bim/fam)
+vcfCooker --in-vcf sample_chrN.vcf.gz --write-bed --out sample_chrN
+
+plink --vcf 파일이름.vcf.gz --make-bed --out 파일이름
+
+phase 과정
+shapeit --input-bed 20201110_raw_chr1.bed 20201110_raw_chr1.bim 20201110_raw_chr1.fam --input-map /backup/PLINK/chr/phase/genetic_map_b37/genetic_map_chr1_combined_b37.txt --output-max 20201110_raw_chr1.phased --effective-size 11418
+shapeit SNPs with high rates of missing data (>10%) 에러 뜨면 --force 사용가능
+
+haps file > vcf
+shapeit -convert --input-haps sample_chrN.phased --output-vcf sample_chrN.phased.vcf
+
+Imputation
+Minimac3 --refHaps refPanel.chrN.vcf --haps sample_chrN.phased.vcf --prefix sample_chrN.phased.imputed --chr N --noPhoneHome --format GT,DS,GP --allTypedSites --cpus 30
+
+파일명 변경
+rename 's/_IonXpress_\w*//' *.pileup
+
+find명령어를 이용하여 특정파일 복사
+find . -name "*.pdf" -exec cp {} ./ \;
+
+hdd시리얼넘버확인
+udevadm info --query=all --name=/dev/sda | grep ID_SERIAL
+
+rename (파일명 변경)
+rename 's/_IonXpress_\w*//' *.pileup
+rename 's/re_//' *.ped
+
+vi에서 특정 문자열 삭제,변경(단일, 다중 파일)
+sed -i 's/삭제할내용/수정내용/' 파일명
+:%s/old/new/g
+find ./ -name "*.html" -exec sed -i 's/old/new/g' {} \;
+
+blastn 사용
+  blastn_outfmt ="6 qseqid sseqid sstrand qlen slen pident nident \
+        mismatch gapopen qstart qend sstart send evalue bitscore score qseq sseq"
+
+"blastn","-query", query, "-subject", fasta_folder+ file ,
+                    "-outfmt", blastn_outfmt, "-task", "blastn-short" , "-word_size", "15" , "-out",out_file
+
+vcf > bcf 변환
+
+bcftools view -O b -o 저장할파일이름.bcf input파일.vcf
+
+p_value추가(vcf파일)
+
+vcftools --bcf 1009.PASS.bcf --hardy --out 1009.p_val
+
+vcf파일 chr 형식 변경 (ex) chr1 > 1이나 1 > chr1)
+bcftools annotate --rename-chrs chr_conv.txt merge_case.vcf.gz | bgzip > merge_case_test.vcf.gz
+
+vcf파일에 rsid 추가 (chr 포멧 같아야됨)
+bcftools annotate -a ../reference/dbsnp_138.b37.vcf.gz -c ID -o merge_control.vcf.gz merge_control_test.vcf.gz
+
+vcf파일 map/ped 파일 변환
+plink --vcf ./merge_control_rs.vcf --maf 0.05 --recode --pheno ./merge_control.pheno --out merge_control_rs --allow-no-sex
+
+bed파일 생성
+plink --file merge_control_rs --make-bed --freq --allow-no-sex --out merge_control_rs
+
+Association logistic regression
+plink --bfile merge_control_rs --allow-no-sex --assoc --out merge_control_rs --ci 0.95
+
+sed '9{/NA/d;}' test_only.assoc | more
+
+특정열 삭제 (6,8번째 열 삭제, -d는 열 구분자, 따로저장 필요)
+cut --complement -d'구분자' -f1,2,3,4,5,6,7,9,10 파일명 > geno_ff.csv
+
+특정문자열을 포함한 파일검색
+find . -name "*.*" | xargs grep "특정문자"
+
+for file in `ls $input_folder `; do `nohup python ./Intervar.py  -b hg19 -i ${input_folder}${file}  --input_type=VCF  -o ${output_folder}${file}` &  done ;
+
+mount(마운트) 및 umount(마운트 해제)
+fdisk -l
+df -h
+mount /dev/sde /AIM
+umount /dev/sde
+
+한번에(코어별로) 여러파일 실행(병렬)
+for file in ` head -20 fastq_name1.txt ` ; do ` nohup genomom_v3.py $file 37_15 singleton 60` & done &
+for file in ` head -n 20 pileup_list.txt ` ; do ` nohup sh pileup.sh $file ` & done &
+
+mysql 데이터 dump
+mysqldump --routines --triggers --skip-lock-tables -u root -p --all-databases --events > 저장하려는 db명
