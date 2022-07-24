@@ -32,11 +32,7 @@ ExecStart=/home/albatross2/anaconda3/envs/lims/bin/gunicorn \
           --bind unix:/run/gunicorn.sock \
           config.wsgi:application
 
-
-
-
-
-3. Create an open systemd service file fo rGunicorn with sudo
+3. Create an open systemd service file for Gunicorn with sudo
 sudo nano /etc/systemd/system/gunicorn.service
 
 ######## /etc/systemd/system/gunicorn.service
@@ -46,6 +42,7 @@ Requires=gunicorn.socket
 After=network.target
 
 Add service & other infor like
+
 Description=gunicorn daemon
 Requires=gunicorn.socket
 After=network.target
@@ -85,6 +82,9 @@ sudo systemctl status gunicorn
 sudo journalctl -u gunicorn
 sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
+
+## Delete gunicorn journal records
+sudo rm -rf /run/log/journal/*
 
 
 ## 7  Configuring Nginx to Proxy Pass to Gunicorn
@@ -179,3 +179,49 @@ server {
 }
 
 #########################################################
+gunicorn & nginx related codes
+pip install gunicorn 
+
+# Create .socket & .service  file inside /etc/systemd/system
+systemctl start gunicorn.socket # name.socket you created 
+systemctl start gunicorn.service # same as start `start gunicorn `
+
+
+systemctl daemon-reload
+sudo systemctl start lims2
+sudo systemctl restart lims2
+sudo systemctl status lims2
+
+ 
+
+sudo systemctl enable lims2
+
+
+
+systemctl daemon-reload
+sudo systemctl start gunicorn
+sudo systemctl enable gunicorn
+
+sudo systemctl status gunicorn
+sudo systemctl is-active gunicorn
+
+sudo journalctl -u gunicorn # Error check in the buttm 
+ps aux | grep gunicorn # process Check 
+
+# Check the Gunicorn Socket File 
+sudo systemctl status gunicorn
+ 
+
+## nginx 
+# syntax check 
+sudo nginx -t 
+systemctl enable nginx.service
+systemctl restart nginx
+systemctl status nginx.service
+
+# to see live error log 
+sudo tail -F /var/log/nginx/error.log
+
+
+
+
