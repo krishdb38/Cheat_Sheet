@@ -1,0 +1,95 @@
+https://manpages.ubuntu.com/manpages/bionic/man1/psql.1.html
+
+1. Create a DB
+sudo -u postgres createdb _DBNAME_
+
+2. Delete a DB
+sudo -u postgres dropdb _DBNAME_
+
+3. Data Base Backup (comple)
+sudo -u postgres pg_dump _DBNAME_ > _DBNAME_.sql
+
+4. Backing singe table 
+sudo -u postgres pg_dump -t _TABLENAME_ _DBNAME_ > _DBNAME_TABLENAME_.sql
+
+5. Show info avbout all cluster
+pg_lsclusters
+
+6. Log in to a DB
+sudo -u postgres psql _DB_NAME_
+
+7. Show Data Base Table
+\dt
+
+8. Describe a single table
+ \d _TABLENAME_
+
+9. show all databases
+\l+
+
+10. List all user defined data types
+\dT
+
+11. Optimize tables
+VACUUM FULL;
+REINDEX TABLE _TABLENAME_;
+
+
+\a
+\c or \connect   # [ -reuse-previous=on|off ] [ dbname [ username ] [ host ] [ port ] | conninfo ]
+\C [ title ]
+\cd [ directory ]
+\conninfo   #  Outputs information about the current database connection.
+\copy 
+\d[S+] [ pattern ]
+\da[S] [ pattern ]
+\dA[+] [ pattern ]
+\db[+] [ pattern ]
+\dc[S+] [ pattern ]
+\dC[+] [ pattern ]
+\dd[S] [ pattern ]
+\dD[S+] [ pattern ]
+\ddp [ pattern ]
+\dE[S+] [ pattern ]
+       \di[S+] [ pattern ]
+       \dm[S+] [ pattern ]
+       \ds[S+] [ pattern ]
+       \dt[S+] [ pattern ]
+       \dv[S+] [ pattern ]
+\des[+] [ pattern ]
+
+############# Django Special ############
+sudo apt-get update
+sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
+sudo apt-get update
+sudo apt-get install python3-pip python3-dev libpq-dev postgresql postgresql-contrib
+sudo -u postgres psql
+CREATE DATABASE myproject; # Create DB for project
+CREATE USER myprojectuser WITH PASSWORD 'password'; # Create USer for DB
+
+# Configure User for Unicode 
+ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
+ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE myprojectuser SET timezone TO 'UTC';
+
+# access rights
+GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
+# Exit 
+\q
+
+############ Settings py 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
+
+
+
+
