@@ -1,0 +1,11 @@
+docker run hello-world
+docker pull busybox
+docker run busybox echo "hello busybox"
+docker ps 
+docker ps -a 
+docker run -it busybox sh 
+
+## Danger Zone 
+docker rm 30........
+docker rm $
+docker container prune 
