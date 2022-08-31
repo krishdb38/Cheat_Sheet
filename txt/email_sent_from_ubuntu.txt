@@ -1,0 +1,42 @@
+sudo apt-get update
+sudo apt-get install ssmtp -y 
+
+
+# Edit the ssmptp.conf file to connect to our Gmail Account
+# vi /etc/ssmtp/ssmtp.conf
+
+root=krish@gmail.com
+mailhub=smtp.gmail.com:587
+FromLineOverride=YES
+AuthUser=krish@gmail.com
+AuthPass=************
+UseTLS=YES
+UseSTARTTLS=YES
+
+## from now gmail blocked all user password 
+# need to registered 2 factor authentication & get app password  for email 
+
+# echo "Success sending Mail" | ssmtp receiver@gmail.com
+{
+    echo To: my_email@domain.com
+    echo From: from_email@example.com
+    echo Subject: mov files greater than 1M
+    echo
+    find /path/to/folder/ -type f -size +1M -name "*.mov"
+} | ssmtp my_email@domain.com
+
+# This way to send with detail information
+
+
+
+## Using mailx email sent success using following settings
+~/.mailrc config file 
+
+set smtp-use-starttls
+set ssl-verify=ignore
+set smtp=smtp://smtp.gmail.com:587
+set smtp-auth=login
+
+https://www.systutorials.com/sending-email-from-mailx-command-in-linux-using-gmails-smtp/
+
+ echo "Lims Data base Back Up Seccess " | mailx -s "Back up Report " krish@gmail.com
