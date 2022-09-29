@@ -24,3 +24,32 @@ ssh ubuntu@ip_address
 # if not connected chek ip address , network protocal ping test
 # In many time fire wall block so always check firewall status ufw 
 
+############################# rsync Options #######################
+rsync options source destination
+# Common options 
+-v : verbose
+-r : recursively
+-a : archive mode 
+-z : compress file 
+-h : human readable
+
+# copy single file  Local computer
+rsync -zvh backup.tar.gz /tmp/backups/  # server@ipaddress
+
+# Copy Local to Remote
+rsync -avzh /root/rpmpkgs root@192.168.0.141:/root/
+
+# Copy Remote to Local
+
+
+
+
+
+
+
+
+
+
+
+
+

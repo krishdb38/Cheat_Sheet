@@ -1,6 +1,6 @@
 sudo apt-get update
 sudo apt-get install ssmtp -y 
-
+sudo apt-get install mailutils
 
 # Edit the ssmptp.conf file to connect to our Gmail Account
 # vi /etc/ssmtp/ssmtp.conf
@@ -36,6 +36,8 @@ set smtp-use-starttls
 set ssl-verify=ignore
 set smtp=smtp://smtp.gmail.com:587
 set smtp-auth=login
+
+# save and chagne the permition 
 
 https://www.systutorials.com/sending-email-from-mailx-command-in-linux-using-gmails-smtp/
 
